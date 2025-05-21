@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact Us</title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to right, #40e0d0, #0074d9);
-      color: #000;
+      background: linear-gradient(to right, #3ddad7, #2a6ec4);
+      color: #000000;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px;
       min-height: 100vh;
     }
     header {
@@ -27,38 +26,46 @@
     }
     h1 {
       font-size: 2em;
-      margin: 20px 0;
+      text-align: center;
     }
-    form {
-      background: white;
+    .container {
+      background-color: white;
       padding: 20px;
       border-radius: 10px;
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-      max-width: 500px;
-      width: 100%;
+      max-width: 800px;
+      width: 90%;
+      margin: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    form {
+      display: flex;
+      flex-direction: column;
     }
     label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: bold;
+      margin: 10px 0 5px;
     }
     input, textarea {
-      width: 100%;
       padding: 10px;
-      margin-bottom: 15px;
       border: 1px solid #ccc;
       border-radius: 5px;
       font-size: 1em;
     }
-    .submit-button {
-      background: linear-gradient(to right, #ffa500, #ff4500);
+    button {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #2a6ec4;
       color: white;
-      padding: 12px 20px;
-      font-size: 1em;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
       font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 10px;
+      margin-top: 20px;
     }
     nav {
       margin-top: auto;
@@ -77,34 +84,52 @@
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="Neo Education Logo" class="logo">
+    <img src="logo.png" alt="Neo Education Logo" class="logo" />
     <h1>Contact Us</h1>
   </header>
 
-  <form action="mailto:benbellaahmed537@gmail.com" method="POST" enctype="text/plain">
-    <label for="name">Name & Surname*</label>
-    <input type="text" id="name" name="name" required>
+  <div class="container">
+    <form action="mailto:benbellaahmed537@gmail.com" method="post" enctype="text/plain" onsubmit="setTimeout(() => window.location.href='index.html', 100);">
+      <label for="name">Name and Surname *</label>
+      <input type="text" id="name" name="name" required />
 
-    <label for="email">Email Address*</label>
-    <input type="email" id="email" name="email" required>
+      <label for="phone">Phone (optional)</label>
+      <input type="tel" id="phone" name="phone" />
 
-    <label for="phone">Phone Number (International)</label>
-    <input type="tel" id="phone" name="phone">
+      <label for="company">Company (optional)</label>
+      <input type="text" id="company" name="company" />
 
-    <label for="company">Company Name</label>
-    <input type="text" id="company" name="company">
+      <label for="email">Email Address *</label>
+      <input type="email" id="email" name="email" required />
 
-    <label for="message">What do you need exactly?</label>
-    <textarea id="message" name="message" rows="5"></textarea>
+      <label for="message">Describe your request *</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
 
-    <button type="submit" class="submit-button">Send</button>
-  </form>
+      <button type="submit">Send</button>
+    </form>
+
+    <h2>Our Contact Information</h2>
+    <p><strong>Email:</strong> benbellaahmed537@gmail.com</p>
+    <p><strong>Address:</strong> 25 Rue des Frères Abdellah, Batna 05000, Algeria</p>
+
+    <iframe 
+      src="https://maps.google.com/maps?q=35.546006,6.161694&z=15&output=embed" 
+      allowfullscreen 
+      loading="lazy">
+    </iframe>
+  </div>
 
   <nav>
-    <a href="about.html">About us</a>
-    <a href="cad-bim.html">CAD & BIM</a>
-    <a href="animation_design.html">Animation & Design</a>
     <a href="index.html">Home</a>
+    <a href="about.html">About us</a>
+    <a href="cad_bim.html">CAD & BIM</a>
+    <a href="animation_design.html">Animation & Design</a>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="refund_policy.html">Terms & Refund</a>
+    <div style="margin-top: 10px; font-size: 0.9em; color: gray;">
+      © 2025 Neo Education. All rights reserved.
+    </div>
   </nav>
 </body>
 </html>

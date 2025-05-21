@@ -1,39 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us - Neo Education</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Neo Education</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #3ddad7, #2a6ec4);
+            color: #000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .logo {
+            height: 50px;
+        }
+        h1 {
+            font-size: 2em;
+            text-align: center;
+        }
+        .content {
+            max-width: 800px;
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin: 20px;
+        }
+        nav {
+            margin-top: auto;
+            padding: 20px;
+            background-color: white;
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: black;
+        }
+        footer {
+            background: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #333;
+            width: 100%;
+        }
+        footer a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: black;
+        }
+    </style>
 </head>
-<body style="margin: 0; font-family: 'Segoe UI', sans-serif; background: linear-gradient(to right, #3ed3eb, #0454d8); color: black;">
-  <div style="padding: 20px;">
-    <img src="logo.png" alt="Neo Education Logo" style="height: 80px;">
-    <h1 style="margin-top: 10px;">About Us</h1>
-    <p style="font-size: 1.2em; max-width: 800px;">
-      Neo Education is committed to delivering innovative consulting solutions for educational institutions and creative companies. We specialize in enhancing the digital workflows of schools, universities, and training centers by offering expert guidance in CAD, BIM, animation, and design tools. Our mission is to help both educators and professionals work more efficiently and effectively using cutting-edge technologies tailored to their unique needs.
-    </p>
+<body>
+    <header>
+        <img src="logo.png" alt="Neo Education Logo" class="logo">
+        <h1>About Neo Education</h1>
+    </header>
 
-    <div style="margin-top: 40px;">
-      <a href="index.html" style="text-decoration: none;">
-        <button style="font-size: 16px; padding: 10px 20px; background-color: orange; color: white; border: none; border-radius: 25px; box-shadow: 3px 3px #444; cursor: pointer;">
-          Back to Home page
-        </button>
-      </a>
+    <div class="content">
+        <p>Neo Education is dedicated to improving educational and operational workflows for academic institutions and architectural firms. We specialize in offering tailored consulting services and innovative solutions that leverage industry-leading CAD and BIM software. Our goal is to enhance the productivity of teaching teams and boost the efficiency of design and construction projects worldwide.</p>
+
+        <p>We also provide creative solutions in animation and visual design, helping educational centers and design studios elevate their visual storytelling. With a global perspective and deep industry expertise, Neo Education is your trusted partner for digital transformation in education and design.</p>
     </div>
-  </div>
 
-   
-    <nav style="margin-top: auto; padding: 20px; background-color: white; width: 100%; text-align: center; font-weight: bold;">
-  <a href="index.html">Home</a>
-  <a href="about.html">About us</a>
-  <a href="cad_bim.html">CAD & BIM</a>
-  <a href="animation_design.html">Animation & Design</a>
-  <a href="contact.html">Contact</a>
-  <a href="privacy.html">Privacy Policy</a>
-  <a href="refund_policy.html">Terms & Refund</a>
-  <div style="margin-top: 10px; font-size: 0.9em; color: gray;">
-    © 2025 Neo Education. All rights reserved.
-  </div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About us</a>
+        <a href="cad_bim.html">CAD & BIM</a>
+        <a href="animation_design.html">Animation & Design</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="refund_policy.html">Terms & Refund</a>
+    </nav>
+
+    <footer>
+        &copy; 2025 Neo Education. All rights reserved. |
+        <a href="privacy.html">Privacy Policy</a> |
+        <a href="refund_policy.html">Terms & Refund</a>
+    </footer>
 </body>
 </html>

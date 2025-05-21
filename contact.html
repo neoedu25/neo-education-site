@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #40e0d0, #0074d9);
+      color: #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      min-height: 100vh;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .logo {
+      height: 50px;
+    }
+    h1 {
+      font-size: 2em;
+      margin: 20px 0;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+      max-width: 500px;
+      width: 100%;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+    .submit-button {
+      background: linear-gradient(to right, #ffa500, #ff4500);
+      color: white;
+      padding: 12px 20px;
+      font-size: 1em;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    nav {
+      margin-top: auto;
+      padding: 20px;
+      background-color: white;
+      width: 100%;
+      text-align: center;
+      font-weight: bold;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Neo Education Logo" class="logo">
+    <h1>Contact Us</h1>
+  </header>
+
+  <form action="mailto:benbellaahmed537@gmail.com" method="POST" enctype="text/plain">
+    <label for="name">Name & Surname*</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email Address*</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="phone">Phone Number (International)</label>
+    <input type="tel" id="phone" name="phone">
+
+    <label for="company">Company Name</label>
+    <input type="text" id="company" name="company">
+
+    <label for="message">What do you need exactly?</label>
+    <textarea id="message" name="message" rows="5"></textarea>
+
+    <button type="submit" class="submit-button">Send</button>
+  </form>
+
+  <nav>
+    <a href="about.html">About us</a>
+    <a href="cad-bim.html">CAD & BIM</a>
+    <a href="animation_design.html">Animation & Design</a>
+    <a href="index.html">Home</a>
+  </nav>
+</body>
+</html>

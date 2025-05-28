@@ -1,77 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Book a Consultation</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to right, #3ddad7, #2a6ec4);
-      color: #000;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
-    header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 20px;
-    }
-    .logo {
-      height: 50px;
-    }
-    h1 {
-      font-size: 2em;
-      margin: 20px 0;
-    }
-    iframe {
-      border: none;
-      width: 100%;
-      max-width: 640px;
-      height: 1751px;
-    }
-    nav {
-      margin-top: auto;
-      padding: 20px;
-      background-color: white;
-      width: 100%;
-      text-align: center;
-      font-weight: bold;
-    }
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
-      color: black;
-    }
-    footer {
-      background: white;
-      padding: 20px;
-      text-align: center;
-      font-size: 14px;
-      color: #333;
-      width: 100%;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Consultation</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #3ddad7, #2a6ec4);
+            color: #000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .logo {
+            height: 50px;
+        }
+        h1 {
+            font-size: 2em;
+            margin: 20px 0;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, textarea, select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+        }
+        button {
+            background-color: #2a6ec4;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #1e57a0;
+        }
+        nav {
+            margin-top: auto;
+            padding: 20px;
+            background-color: white;
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: black;
+        }
+        footer {
+            background: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #333;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <img src="logo.png" alt="Neo Education Logo" class="logo">
-    <h1>Book a Consultation</h1>
-  </header>
+    <header>
+        <img src="logo.png" alt="Neo Education Logo" class="logo">
+        <h1>Book a Consultation</h1>
+    </header>
 
-  <!-- Embedded Google Form -->
-  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScpldFBaRrcSlE2KarfAF2GbymkmQFeYE-cOOPuEu4KKDVaYw/viewform?embedded=true" allowfullscreen>
-    Loading…
-  </iframe>
+    <form action="https://payeer.com/merchant/" method="GET">
+        <label for="name">Full Name *</label>
+        <input type="text" id="name" name="name" required>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About us</a>
-    <a href="cad_bim.html">CAD & BIM</a>
-    <a href="animation_design.html">Animation & Design</a>
-    <a href="contact.html">Contact</a>
-    <a href="privacy.html">Privacy Policy</a>
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="date">Choose a Date *</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="message">Describe Your Needs</label>
+        <textarea id="message" name="message" rows="4"></textarea>
+
+        <!-- Payeer Integration (sample GET form) -->
+        <input type="hidden" name="m_shop" value="YOUR_M_SHOP_ID">
+        <input type="hidden" name="m_orderid" value="appointment123">
+        <input type="hidden" name="m_amount" value="50.00">
+        <input type="hidden" name="m_curr" value="USD">
+        <input type="hidden" name="m_desc" value="Booking a consultation">
+        <input type="hidden" name="m_sign" value="SIGNATURE_HERE">
+
+        <button type="submit">Pay & Book Appointment</button>
+    </form>
+
+    
+    <nav style="margin-top: auto; padding: 20px; background-color: white; width: 100%; text-align: center; font-weight: bold;">
+  <a href="index.html">Home</a>
+  <a href="about.html">About us</a>
+  <a href="cad_bim.html">CAD & BIM</a>
+  <a href="animation_design.html">Animation & Design</a>
+  <a href="contact.html">Contact</a>
+  <a href="privacy.html">Privacy Policy</a>
+  <a href="refund_policy.html">Terms & Refund</a>
+  <div style="margin-top: 10px; font-size: 0.9em; color: gray;">
+    © 2025 Neo Education. All rights reserved.
+  </div>
+</body>
+</html>

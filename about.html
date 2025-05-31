@@ -1,96 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Neo Education</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(to right, #3ddad7, #2a6ec4);
-            color: #000;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-        }
-        header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        .logo {
-            height: 50px;
-        }
-        h1 {
-            font-size: 2em;
-            text-align: center;
-        }
-        .content {
-            max-width: 800px;
-            text-align: center;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            margin: 20px;
-        }
-        nav {
-            margin-top: auto;
-            padding: 20px;
-            background-color: white;
-            width: 100%;
-            text-align: center;
-            font-weight: bold;
-        }
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: black;
-        }
-        footer {
-            background: white;
-            padding: 20px;
-            text-align: center;
-            font-size: 14px;
-            color: #333;
-            width: 100%;
-        }
-        footer a {
-            margin: 0 10px;
-            text-decoration: none;
-            color: black;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us - Neo Education</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #30cfd0, #330867);
+      color: white;
+    }
+
+    .wrapper {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 10px 30px;
+    }
+
+    header img {
+      height: 50px;
+    }
+
+    .about {
+      flex: 1;
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .about h2 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .about p {
+      font-size: 1.1em;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    footer {
+      background-color: #222;
+      padding: 20px;
+      color: #ccc;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      font-size: 0.9em;
+    }
+
+    footer a {
+      color: #ccc;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
+  <div class="wrapper">
+
     <header>
-        <img src="logo.png" alt="Neo Education Logo" class="logo">
-        <h1>About Neo Education</h1>
+      <img src="logo.png" alt="Neo Education Logo">
     </header>
 
-    <div class="content">
-        <p>Neo Education is dedicated to improving educational and operational workflows for academic institutions and architectural firms. We specialize in offering tailored consulting services and innovative solutions that leverage industry-leading CAD and BIM software. Our goal is to enhance the productivity of teaching teams and boost the efficiency of design and construction projects worldwide.</p>
+    <section class="about">
+      <h2>About Us</h2>
+      <p>At <strong>Neo Education</strong>, we believe that access to essential digital tools should be a right—not a privilege. Our mission is to make industry-standard software, such as Autodesk solutions, accessible legally and affordably to students, educators, and institutions worldwide.</p>
 
-        <p>We also provide creative solutions in animation and visual design, helping educational centers and design studios elevate their visual storytelling. With a global perspective and deep industry expertise, Neo Education is your trusted partner for digital transformation in education and design.</p>
-    </div>
-
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About us</a>
-        <a href="cad_bim.html">CAD & BIM</a>
-        <a href="animation_design.html">Animation & Design</a>
-        <a href="contact.html">Contact</a>
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="refund_policy.html">Terms & Refund</a>
-    </nav>
+      <p>By reducing barriers to powerful technology, we support learning, creativity, and professional growth—because we know that when people are equipped with the right tools, they can build the future.</p>
+    </section>
 
     <footer>
-        &copy; 2025 Neo Education. All rights reserved. |
-        <a href="privacy.html">Privacy Policy</a> |
-        <a href="refund_policy.html">Terms & Refund</a>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="refund_policy.html#">Refund Policy</a>
     </footer>
+
+  </div>
 </body>
 </html>

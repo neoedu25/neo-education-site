@@ -1,0 +1,14 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/cad_bim", "destination": "/cad_bim.html" },
+    { "source": "/animation_design", "destination": "/animation_design.html" },
+    { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/book", "destination": "/book_appointment.html" },
+    { "source": "/success", "destination": "/success.html" },
+    { "source": "/fail", "destination": "/fail.html" },
+    { "source": "/policies", "destination": "/policies.html" },
+    { "source": "/refund", "destination": "/refund_policy.html" }
+  ]
+}

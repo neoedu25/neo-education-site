@@ -5,15 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Order 3ds</title>
   <style>
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
       font-family: Arial, sans-serif;
-      background: #f0f0f0;
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     header {
-      background: #222;
+      background: rgba(0, 0, 0, 0.7);
       padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     header img {
@@ -21,20 +33,21 @@
     }
 
     .form-container {
-      padding: 30px;
+      flex: 1;
+      padding: 40px 20px;
       display: flex;
       justify-content: center;
+      align-items: center;
     }
 
     footer {
-      background-color: #222;
+      background-color: rgba(0, 0, 0, 0.7);
       padding: 20px;
       color: #ccc;
       display: flex;
       justify-content: center;
       gap: 30px;
       font-size: 0.9em;
-      margin-top: 40px;
     }
 
     footer a {
@@ -44,6 +57,11 @@
 
     footer a:hover {
       text-decoration: underline;
+    }
+
+    iframe {
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
     }
   </style>
 </head>

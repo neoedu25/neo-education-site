@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Paiement Binance Pay - 150 USDT</title>
+  <title>Paiement Crypto - 150 USDT</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -31,6 +31,7 @@
       text-align: center;
       max-width: 500px;
       width: 100%;
+      color: #000;
     }
 
     .logo {
@@ -38,29 +39,20 @@
       margin-bottom: 30px;
     }
 
-    .binance-button {
-      display: inline-flex;
-      align-items: center;
-      background-color: #fcd535;
-      border: none;
-      border-radius: 10px;
-      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
-      padding: 12px 24px;
-      font-size: 18px;
-      font-weight: bold;
-      color: #181a20;
-      cursor: pointer;
-      text-decoration: none;
-      transition: transform 0.2s;
+    .payment-text {
+      color: #000;
+      margin-bottom: 20px;
     }
 
-    .binance-button:hover {
-      transform: scale(1.05);
+    .payment-amount {
+      color: #000;
+      font-size: 1.2em;
+      margin-bottom: 30px;
     }
 
-    .binance-button img {
-      height: 24px;
-      margin-right: 10px;
+    .nowpayments-button {
+      display: inline-block;
+      margin: 20px 0;
     }
 
     footer {
@@ -76,18 +68,19 @@
   <div class="payment-container">
     <img src="Logo.png" alt="Neo Education" class="logo">
 
-    <h2>Paiement sécurisé via Binance Pay</h2>
-    <p>Montant : <strong>150 USDT</strong></p>
+    <h2 class="payment-text">Paiement sécurisé en Crypto</h2>
+    <p class="payment-amount">Montant : <strong>150 USDT</strong></p>
 
-    <a href="https://s.binance.com/g2uiH7Uf" class="binance-button" target="_blank">
-      <img src="images/binance.png" alt="Binance Logo">
-      Payer avec Binance
-    </a>
+    <div class="nowpayments-button">
+      <a href="https://nowpayments.io/payment/?iid=4954202665&source=button" target="_blank" rel="noreferrer noopener">
+        <img src="https://nowpayments.io/images/embeds/payment-button-white.svg" alt="Bouton de paiement Bitcoin et crypto par NOWPayments">
+      </a>
+    </div>
   </div>
 
   <footer>
     <p>© 2025 Neo Education. Tous droits réservés.</p>
-    <p>Paiement sécurisé via Binance Pay</p>
+    <p>Paiement sécurisé via NOWPayments</p>
     <p>Support : benbellaahmed537@gmail.com</p>
   </footer>
 </body>

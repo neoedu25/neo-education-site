@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Failed - Neo Education</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .failure-container {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 600px;
+      padding: 40px;
+      color: #333;
+    }
+
+    .logo {
+      height: 60px;
+      margin-bottom: 20px;
+    }
+
+    .crossmark {
+      color: #e63946;
+      font-size: 72px;
+      margin: 20px 0;
+    }
+
+    h1 {
+      color: #e63946;
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin: 15px 0;
+      line-height: 1.6;
+    }
+
+    .error-details {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 25px 0;
+      text-align: left;
+    }
+
+    .action-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 25px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 30px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+
+    .retry-button {
+      background-color: #2a6ec4;
+      color: white;
+    }
+
+    .retry-button:hover {
+      background-color: #1e5bb5;
+    }
+
+    .home-button {
+      background-color: #f8f9fa;
+      color: #333;
+      border: 1px solid #ddd;
+    }
+
+    .home-button:hover {
+      background-color: #e9ecef;
+    }
+
+    footer {
+      margin-top: 40px;
+      color: #ccc;
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 480px) {
+      .action-buttons {
+        flex-direction: column;
+      }
+      
+      .button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="failure-container">
+    <img src="Logo.png" alt="Neo Education" class="logo">
+    
+    <div class="crossmark">✕</div>
+    <h1>Payment Failed</h1>
+    
+    <p>We couldn't process your payment. Please check your payment details and try again.</p>
+    
+    <div class="error-details">
+      <p><strong>Possible reasons:</strong></p>
+      <ul>
+        <li>Insufficient funds in your account</li>
+        <li>Incorrect card details entered</li>
+        <li>Payment method not supported</li>
+        <li>Temporary bank authorization issue</li>
+      </ul>
+    </div>
+    
+    <p>For assistance, please contact our support team at <strong>benbellaahmed537@gmail.com</strong></p>
+    
+    <div class="action-buttons">
+      <a href="payment.html" class="button retry-button">Retry Payment</a>
+      <a href="index.html" class="button home-button">Return to Homepage</a>
+    </div>
+  </div>
+  
+  <footer>
+    <p>© 2025 Neo Education. All rights reserved.</p>
+  </footer>
+</body>
+</html>

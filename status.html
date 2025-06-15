@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Status - Neo Education</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .status-container {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 800px;
+      padding: 40px;
+      color: #333;
+    }
+
+    .logo {
+      height: 60px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      color: #2a6ec4;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .order-summary {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+
+    .status-timeline {
+      position: relative;
+      padding-left: 50px;
+      margin: 30px 0;
+    }
+
+    .status-step {
+      position: relative;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-left: 2px solid #ddd;
+      padding-left: 25px;
+    }
+
+    .status-step:last-child {
+      border-left: 0;
+    }
+
+    .status-icon {
+      position: absolute;
+      left: -36px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ddd;
+      color: white;
+      font-weight: bold;
+    }
+
+    .status-step.active .status-icon {
+      background: #4CAF50;
+    }
+
+    .status-step.completed .status-icon {
+      background: #2a6ec4;
+    }
+
+    .status-date {
+      font-size: 0.9em;
+      color: #666;
+      margin-top: 5px;
+    }
+
+    .support-contact {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+      text-align: center;
+    }
+
+    .button {
+      display: inline-block;
+      background-color: #2a6ec4;
+      color: white;
+      padding: 12px 30px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 20px;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #1e5bb5;
+    }
+
+    footer {
+      margin-top: 40px;
+      color: #ccc;
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 600px) {
+      .status-timeline {
+        padding-left: 30px;
+      }
+      
+      .status-icon {
+        left: -26px;
+        width: 20px;
+        height: 20px;
+        font-size: 0.8em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="status-container">
+    <img src="Logo.png" alt="Neo Education" class="logo">
+    <h1>Your Order Status</h1>
+    
+    <div class="order-summary">
+      <h3>Order #NE2023-45678</h3>
+      <p><strong>Product:</strong> Autodesk Architecture Pack</p>
+      <p><strong>Amount:</strong> 150 USDT</p>
+      <p><strong>Order Date:</strong> October 15, 2023</p>
+    </div>
+    
+    <div class="status-timeline">
+      <div class="status-step completed">
+        <div class="status-icon">✓</div>
+        <h3>Order Received</h3>
+        <p>We've received your order and payment</p>
+        <div class="status-date">October 15, 2023 - 14:30</div>
+      </div>
+      
+      <div class="status-step active">
+        <div class="status-icon">!</div>
+        <h3>Processing</h3>
+        <p>Your license is being activated</p>
+        <div class="status-date">Expected completion: October 16, 2023</div>
+      </div>
+      
+      <div class="status-step">
+        <div class="status-icon">2</div>
+        <h3>License Activation</h3>
+        <p>You will receive access to your software</p>
+      </div>
+      
+      <div class="status-step">
+        <div class="status-icon">3</div>
+        <h3>Completed</h3>
+        <p>Order successfully delivered</p>
+      </div>
+    </div>
+    
+    <div class="support-contact">
+      <p>Need help with your order?</p>
+      <p>Contact our support team at <strong>benbellaahmed537@gmail.com</strong></p>
+      <a href="index.html" class="button">Return to Homepage</a>
+    </div>
+  </div>
+  
+  <footer>
+    <p>© 2025 Neo Education. All rights reserved.</p>
+  </footer>
+</body>
+</html>

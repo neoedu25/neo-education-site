@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Place an Order</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      padding: 20px;
+    }
+
+    header img {
+      height: 50px;
+    }
+
+    .form-container {
+      background-color: rgba(255, 255, 255, 0.95);
+      color: #000;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      max-width: 600px;
+      width: 90%;
+      margin-top: 20px;
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input, select {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+    }
+
+    button {
+      background-color: #1e3c72;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #16345e;
+    }
+
+    footer {
+      margin-top: auto;
+      background-color: #222;
+      padding: 20px;
+      color: #ccc;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      font-size: 0.9em;
+    }
+
+    footer a {
+      color: #ccc;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="logo.png" alt="Neo Education Logo">
+</header>
+
+<div class="form-container">
+  <h2>Place Your Order</h2>
+  <form id="orderForm">
+    <label>First Name:</label>
+    <input type="text" name="nom" required>
+
+    <label>Last Name:</label>
+    <input type="text" name="prenom" required>
+
+    <label>Email Address:</label>
+    <input type="email" name="email" required>
+
+    <label>Selected Software:</label>
+    <select name="logiciel" id="softwareSelect" required>
+      <option value="">-- Choose a software --</option>
+      <option value="architecture pack">Architecture Pack</option>
+      <option value="animation pack">Animation Pack</option>
+      <option value="construction & BIM">Construction & BIM</option>
+      <option value="3ds">3ds</option>
+      <option value="AutoCAD">AutoCAD</option>
+      <option value="Revit">Revit</option>
+      <option value="Maya">Maya</option>
+      <option value="Fusion360">Fusion360</option>
+      <option value="Navisworks">Navisworks</option>
+      <option value="Inventor">Inventor</option>
+      <option value="MotionBuilder">MotionBuilder</option>
+      <option value="Flame">Flame</option>
+      <option value="All in one">All in one</option>
+    </select>
+
+    <label>Payment Method:</label>
+    <select name="paiement" required>
+      <option value="">-- Choose a payment method --</option>
+      <option value="Crypto">Crypto</option>
+      <option value="Card">Card</option>
+    </select>
+
+    <button type="submit">Submit Order</button>
+  </form>
+</div>
+
+<footer>
+  <a href="index.html">Home</a>
+  <a href="about.html">About Us</a>
+  <a href="privacy.html">Privacy Policy</a>
+  <a href="refund_policy.html">Refund Policy</a>
+</footer>
+
+<script>
+  const form = document.getElementById("orderForm");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch("https://script.google.com/macros/s/AKfycby0BbGRHp7LV5MwKKRg2CYEwz7OsB9pN0298qJd3fVw73qd5KmK0ozCXvvF_GYHCUvqHA/exec", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        window.location.href = "thankyou.html"; // Rediriger après succès
+      } else {
+        alert("Une erreur est survenue : " + result.error);
+      }
+
+    } catch (error) {
+      alert("Erreur de connexion au serveur : " + error.message);
+    }
+  });
+
+  // Pré-sélection du logiciel si passé en paramètre d'URL
+  const params = new URLSearchParams(window.location.search);
+  const software = params.get("software");
+  if (software) {
+    const select = document.getElementById("softwareSelect");
+    for (let option of select.options) {
+      if (option.value.toLowerCase() === software.toLowerCase()) {
+        option.selected = true;
+        break;
+      }
+    }
+  }
+</script>
+
+</body>
+</html>

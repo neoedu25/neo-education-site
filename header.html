@@ -33,24 +33,4 @@
       </ul>
     </nav>
   </div>
-
- <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const button = document.querySelector('header button');
-    const dropdown = document.querySelector('.dropdown');
-
-    if (button && dropdown) {
-      button.addEventListener('click', function (e) {
-        e.stopPropagation(); // Évite la fermeture immédiate
-        dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
-      });
-
-      document.addEventListener('click', function (e) {
-        if (!button.contains(e.target) && !dropdown.contains(e.target)) {
-          dropdown.style.display = 'none';
-        }
-      });
-    }
-  });
-</script>
 </header>

@@ -36,12 +36,20 @@
 
   <div class="message" id="message"></div>
 
-  <script>
+ <form id="contactForm">
+  <input type="text" name="firstName" required>
+  <input type="text" name="lastName" required>
+  <input type="email" name="email" required>
+  <textarea name="subject" required></textarea>
+  <button type="submit">Envoyer</button>
+</form>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("contactForm");
-    const message = document.getElementById("message");
 
     form.addEventListener("submit", async (e) => {
-      e.preventDefault();
+      e.preventDefault(); // 🔥 Empêche la redirection par défaut
 
       const formData = new FormData(form);
       const data = Object.fromEntries(formData.entries());
@@ -49,33 +57,22 @@
       try {
         const response = await fetch("https://monbackend-6wwk.onrender.com/contact", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data)
         });
 
         const result = await response.json();
-
         if (response.ok) {
-          message.style.color = "green";
-          message.textContent = "Message envoyé avec succès.";
-          form.reset();
-          setTimeout(() => {
-            window.location.href = "https://www.neoedu.xyz/thankyou.html";
-          }, 1500);
+          window.location.href = "https://www.neoedu.xyz/thankyou.html";
         } else {
-          message.style.color = "red";
-          message.textContent = "Erreur : " + (result.error || "inconnue");
+          alert("Erreur : " + result.error);
         }
-
       } catch (error) {
         console.error(error);
-        message.style.color = "red";
-        message.textContent = "Erreur de connexion au serveur.";
+        alert("Erreur de connexion au serveur.");
       }
     });
-  </script>
-
+  });
+</script>
 </body>
 </html>

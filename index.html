@@ -166,44 +166,42 @@
 
   <div id="footer"></div>
 
-   <script>
-    function loadHTML(selector, url) {
-      fetch(url)
-        .then(response => response.text())
-        .then(data => {
-          document.querySelector(selector).innerHTML = data;
+  <script>
+  function loadHTML(selector, url, callback) {
+    fetch(url)
+      .then(response => response.text())
+      .then(html => {
+        document.querySelector(selector).innerHTML = html;
+        if (callback) callback();
+      })
+      .catch(error => console.error('Erreur de chargement de', url, error));
+  }
 
-          if (selector === 'header') {
-            initHeaderDropdown(); // On lance les événements du menu une fois que le header est chargé
-          }
-        })
-        .catch(error => console.error('Erreur de chargement:', error));
+  function initHeaderDropdown() {
+    const button = document.querySelector('header button');
+    const dropdown = document.querySelector('.dropdown');
+
+    if (button && dropdown) {
+      button.addEventListener('click', function (e) {
+        e.stopPropagation();
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!button.contains(e.target) && !dropdown.contains(e.target)) {
+          dropdown.style.display = 'none';
+        }
+      });
+    } else {
+      console.warn("Dropdown menu non trouvé.");
     }
+  }
 
-    function initHeaderDropdown() {
-      const button = document.querySelector('header button');
-      const dropdown = document.querySelector('.dropdown');
+  document.addEventListener('DOMContentLoaded', function () {
+    loadHTML('header', 'header.html', initHeaderDropdown);
+    loadHTML('footer', 'footer.html');
+  });
+</script>
 
-      if (button && dropdown) {
-        button.addEventListener('click', function (e) {
-          e.stopPropagation();
-          dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-        });
-
-        document.addEventListener('click', function (e) {
-          if (!button.contains(e.target) && !dropdown.contains(e.target)) {
-            dropdown.style.display = 'none';
-          }
-        });
-      } else {
-        console.warn('Bouton ou dropdown introuvable dans le header');
-      }
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      loadHTML('header', 'header.html');
-      loadHTML('footer', 'footer.html');
-    });
-  </script>
 </body>
 </html>

@@ -169,42 +169,54 @@
 
   <div id="footer"></div>
 
-  <script>
-    async function loadHTML(id, file) {
-      try {
-        const res = await fetch(file);
-        const html = await res.text();
-        document.getElementById(id).innerHTML = html;
-      } catch (e) {
-        console.error("Erreur lors du chargement de", file, e);
-      }
+ <script>
+  function loadHTML(selector, url, callback) {
+    fetch(url)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Erreur HTTP ${response.status}`);
+        }
+        return response.text();
+      })
+      .then(html => {
+        document.querySelector(selector).innerHTML = html;
+        if (typeof callback === "function") callback();
+      })
+      .catch(error => {
+        console.error(`Erreur lors du chargement de ${url}:`, error);
+      });
+  }
+
+  function initHeaderDropdown() {
+    const header = document.querySelector('#header');
+    if (!header) return;
+
+    const button = header.querySelector('button');
+    const dropdown = header.querySelector('.dropdown');
+
+    if (!button || !dropdown) {
+      console.warn("Éléments du dropdown non trouvés.");
+      return;
     }
 
-    loadHTML("header", "header.html");
-    loadHTML("footer", "footer.html");
-  </script>
-  <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    // Attendre un petit délai pour que header.html soit chargé dans la page
-    setTimeout(function () {
-      const toggle = document.getElementById("softwares-toggle");
-      const dropdown = document.getElementById("softwares-dropdown");
+    button.addEventListener('click', function (e) {
+      e.stopPropagation();
+      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    });
 
-      if (toggle && dropdown) {
-        toggle.addEventListener("click", function (e) {
-          e.stopPropagation();
-          dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
-        });
-
-        document.addEventListener("click", function (e) {
-          if (!toggle.contains(e.target) && !dropdown.contains(e.target)) {
-            dropdown.style.display = "none";
-          }
-        });
+    document.addEventListener('click', function (e) {
+      if (!button.contains(e.target) && !dropdown.contains(e.target)) {
+        dropdown.style.display = 'none';
       }
-    }, 300); // attend que le header soit injecté
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    loadHTML('#header', 'header.html', initHeaderDropdown);
+    loadHTML('#footer', 'footer.html');
   });
 </script>
+
 
 </body>
 </html>

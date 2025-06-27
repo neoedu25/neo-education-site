@@ -183,5 +183,28 @@
     loadHTML("header", "header.html");
     loadHTML("footer", "footer.html");
   </script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Attendre un petit délai pour que header.html soit chargé dans la page
+    setTimeout(function () {
+      const toggle = document.getElementById("softwares-toggle");
+      const dropdown = document.getElementById("softwares-dropdown");
+
+      if (toggle && dropdown) {
+        toggle.addEventListener("click", function (e) {
+          e.stopPropagation();
+          dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+        });
+
+        document.addEventListener("click", function (e) {
+          if (!toggle.contains(e.target) && !dropdown.contains(e.target)) {
+            dropdown.style.display = "none";
+          }
+        });
+      }
+    }, 300); // attend que le header soit injecté
+  });
+</script>
+
 </body>
 </html>

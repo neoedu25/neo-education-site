@@ -15,30 +15,10 @@
     body {
       font-family: 'Montserrat', sans-serif;
       background: linear-gradient(to right, #3ddad7, #2a6ec4);
-      color: #000000;
+      color: #000;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-    }
-
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 15px;
-      padding: 20px;
-      background-color: rgba(34, 34, 34, 0.8);
-      backdrop-filter: blur(5px);
-    }
-
-    .logo {
-      height: 50px;
-    }
-
-    h1 {
-      font-size: 2em;
-      color: white;
-      text-align: center;
     }
 
     .container {
@@ -51,138 +31,139 @@
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
 
-    .contact-info {
-      margin: 30px 0;
-      padding: 20px;
-      background: #f5f5f5;
-      border-radius: 8px;
-    }
-
-    .contact-info h2 {
+    h1 {
+      font-size: 2em;
+      text-align: center;
+      margin-bottom: 30px;
       color: #2a6ec4;
-      margin-bottom: 15px;
     }
 
-    .contact-info p {
-      margin: 10px 0;
-      line-height: 1.6;
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
     }
 
-    .contact-info strong {
-      color: #333;
-    }
-
-    .google-form-container {
-      width: 100%;
-      height: 824px;
-      margin: 30px 0;
+    input, textarea {
+      padding: 12px 15px;
+      border: 1px solid #ccc;
       border-radius: 8px;
-      overflow: hidden;
+      font-family: inherit;
+      font-size: 1em;
     }
 
-    iframe {
-      width: 100%;
-      height: 100%;
+    textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    button {
+      background-color: #2a6ec4;
+      color: white;
       border: none;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #215bb8;
     }
 
     .map-container {
       width: 100%;
       height: 400px;
-      margin-top: 30px;
+      margin-top: 40px;
       border-radius: 8px;
       overflow: hidden;
     }
 
-    footer {
-      background-color: rgba(34, 34, 34, 0.9);
-      color: #ccc;
-      padding: 20px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      font-size: 0.9em;
-      margin-top: auto;
-      backdrop-filter: blur(5px);
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    footer a {
-      color: #ccc;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    footer a:hover {
-      color: white;
-      text-decoration: underline;
-    }
-
-    .copyright {
-      margin-top: 10px;
-      font-size: 0.8em;
-      color: #888;
-    }
-
     @media (max-width: 768px) {
-      .google-form-container {
-        height: 1000px;
-      }
-      
-      .footer-links {
-        flex-direction: column;
-        gap: 10px;
+      form {
+        gap: 15px;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="Logo.png" alt="Neo Education Logo" class="logo" />
-    <h1>Contact Us</h1>
-  </header>
+
+  <div id="header"></div>
 
   <div class="container">
-    <div class="google-form-container">
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdanRuinJ3eeLa4_DQhoeW4voEj3b3JCh_A0ug95gGCqiZsLA/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-    </div>
+    <h1>Contact Us</h1>
+    <form>
+      <input type="text" placeholder="First Name" name="firstName" required>
+      <input type="text" placeholder="Last Name" name="lastName" required>
+      <input type="email" placeholder="Email Address" name="email" required>
+      <textarea placeholder="Subject" name="subject" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
 
-    <div class="contact-info">
-      <h2>Our Contact Information</h2>
-      <p><strong>Email:</strong> benbellaahmed537@gmail.com</p>
-      <p><strong>Address:</strong> 25 Rue des Frères Abdellah, Batna 05000, Algeria</p>
-      <p><strong>Response Time:</strong> We typically respond within 24-48 hours</p>
-    </div>
+    <<div class="map-container">
+  <iframe
+    src="https://maps.google.com/maps?q=35.546006,6.161694&z=15&output=embed"
+    width="100%"
+    height="100%"
+    style="border:0;"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
 
-    <div class="map-container">
-      <iframe 
-        src="https://maps.google.com/maps?q=35.546006,6.161694&z=15&output=embed" 
-        allowfullscreen 
-        loading="lazy">
-      </iframe>
     </div>
   </div>
 
-  <footer>
-    <div class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="about.html">About us</a>
-      <a href="cad_bim.html">CAD & BIM</a>
-      <a href="animation_design.html">Animation & Design</a>
-      <a href="contact.html">Contact</a>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="refund_policy.html">Terms & Refund</a>
-    </div>
-    <div class="copyright">
-      © 2025 Neo Education. All rights reserved.
-    </div>
-  </footer>
+  <div id="footer"></div>
+
+  <script>
+    function loadHTML(selector, url, callback) {
+      fetch(url)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Erreur HTTP ${response.status}`);
+          }
+          return response.text();
+        })
+        .then(html => {
+          document.querySelector(selector).innerHTML = html;
+          if (typeof callback === "function") callback();
+        })
+        .catch(error => {
+          console.error(`Erreur lors du chargement de ${url}:`, error);
+        });
+    }
+
+    function initHeaderDropdown() {
+      const header = document.querySelector('#header');
+      if (!header) return;
+
+      const button = header.querySelector('button');
+      const dropdown = header.querySelector('.dropdown');
+
+      if (!button || !dropdown) {
+        console.warn("Éléments du dropdown non trouvés.");
+        return;
+      }
+
+      button.addEventListener('click', function (e) {
+        e.stopPropagation();
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!button.contains(e.target) && !dropdown.contains(e.target)) {
+          dropdown.style.display = 'none';
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      loadHTML('#header', 'header.html', initHeaderDropdown);
+      loadHTML('#footer', 'footer.html');
+    });
+  </script>
 </body>
 </html>

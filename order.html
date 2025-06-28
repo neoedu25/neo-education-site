@@ -1,235 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Place Your Order - Neo Education</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<form id="orderForm">
+  <input type="text" name="nom" placeholder="Nom" required>
+  <input type="text" name="prenom" placeholder="Prénom" required>
+  <input type="email" name="email" placeholder="Email" required>
+  
+  <!-- Phone is optional -->
+  <input type="tel" name="phone" placeholder="Téléphone (optionnel)">
+  
+  <select name="logiciel" id="softwareSelect" required>
+    <option value="" disabled selected>Choisissez le logiciel</option>
+    <option value="Architecture Pack">Architecture Pack</option>
+    <option value="Construction and BIM">Construction & BIM</option>
+    <option value="Animation and VFX">Animation & VFX</option>
+    <option value="AutoCAD">AutoCAD</option>
+    <option value="Revit">Revit</option>
+    <option value="3ds Max">3ds Max</option>
+    <option value="Maya">Maya</option>
+    <option value="Navisworks">Navisworks</option>
+    <option value="Inventor">Inventor</option>
+    <option value="MotionBuilder">MotionBuilder</option>
+    <option value="Fusion 360">Fusion 360</option>
+    <option value="Flame">Flame</option>
+  </select>
 
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(to right, #3ddad7, #2a6ec4);
-      color: #000;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
+  <select name="paiment" required>
+    <option value="" disabled selected>Mode de paiement</option>
+    <option value="Carte">Carte</option>
+    <option value="PayPal">PayPal</option>
+    <option value="Virement bancaire">Virement bancaire</option>
+    <option value="Crypto">Crypto</option>
+  </select>
 
-    .container {
-      background-color: white;
-      padding: 30px;
-      border-radius: 12px;
-      max-width: 900px;
-      width: 95%;
-      margin: 30px auto;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
+  <select name="contact_Method" required>
+    <option value="" disabled selected>Méthode de contact préférée</option>
+    <option value="Email">Email</option>
+    <option value="WhatsApp">WhatsApp</option>
+    <option value="Telegram">Telegram</option>
+    <option value="Téléphone">Téléphone</option>
+  </select>
 
-    h1 {
-      font-size: 2em;
-      text-align: center;
-      margin-bottom: 30px;
-      color: #2a6ec4;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    input, select, textarea {
-      padding: 12px 15px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-family: inherit;
-      font-size: 1em;
-    }
-
-    textarea {
-      resize: vertical;
-      min-height: 100px;
-    }
-
-    button {
-      background-color: #2a6ec4;
-      color: white;
-      border: none;
-      padding: 15px;
-      border-radius: 8px;
-      font-size: 1em;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #215bb8;
-    }
-
-    .message {
-      text-align: center;
-      margin-top: 20px;
-      font-weight: bold;
-    }
-
-    @media (max-width: 768px) {
-      form {
-        gap: 15px;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <div id="header"></div>
-
-  <div class="container">
-    <h1>Place Your Order</h1>
-    <form id="orderForm">
-      <input type="text" name="firstName" placeholder="First Name" required>
-      <input type="text" name="lastName" placeholder="Last Name" required>
-      <input type="email" name="email" placeholder="Email Address" required>
-      <input type="tel" name="phone" placeholder="Phone Number" required>
-
-      <select name="software" id="softwareSelect" required>
-        <option value="" disabled selected>Select Software</option>
-        <option value="Architecture Pack">Architecture Pack</option>
-        <option value="Construction and BIM">Construction & BIM</option>
-        <option value="Animation and VFX">Animation & VFX</option>
-        <option value="AutoCAD">AutoCAD</option>
-        <option value="Revit">Revit</option>
-        <option value="3ds Max">3ds Max</option>
-        <option value="Maya">Maya</option>
-        <option value="Navisworks">Navisworks</option>
-        <option value="Inventor">Inventor</option>
-        <option value="MotionBuilder">MotionBuilder</option>
-        <option value="Fusion 360">Fusion 360</option>
-        <option value="Flame">Flame</option>
-      </select>
-
-      <select name="paymentMethod" required>
-        <option value="" disabled selected>Select Payment Method</option>
-        <option value="Card">Card</option>
-        <option value="PayPal">PayPal</option>
-        <option value="Bank Transfer">Bank Transfer</option>
-        <option value="Crypto">Crypto</option>
-      </select>
-
-      <select name="contactMethod" required>
-        <option value="" disabled selected>Preferred Contact Method</option>
-        <option value="Email">Email</option>
-        <option value="WhatsApp">WhatsApp</option>
-        <option value="Telegram">Telegram</option>
-        <option value="Phone">Phone</option>
-      </select>
-
-      <textarea name="message" placeholder="Your message (optional)"></textarea>
-      <button type="submit">Submit Order</button>
-    </form>
-    <div class="message" id="message"></div>
-  </div>
-
-  <div id="footer"></div>
-
-  <script>
-    // Load header/footer
-    function loadHTML(selector, url, callback) {
-      fetch(url)
-        .then(res => {
-          if (!res.ok) throw new Error("Error " + res.status);
-          return res.text();
-        })
-        .then(html => {
-          document.querySelector(selector).innerHTML = html;
-          if (callback) callback();
-        })
-        .catch(error => console.error(`Error loading ${url}:`, error));
-    }
-
-    function initHeaderDropdown() {
-      const header = document.querySelector('#header');
-      const button = header?.querySelector('button');
-      const dropdown = header?.querySelector('.dropdown');
-
-      if (!button || !dropdown) return;
-
-      button.addEventListener('click', (e) => {
-        e.stopPropagation();
-        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-      });
-
-      document.addEventListener('click', (e) => {
-        if (!button.contains(e.target) && !dropdown.contains(e.target)) {
-          dropdown.style.display = 'none';
-        }
-      });
-    }
-
-    // Preselect software if passed in URL
-    function getQueryParam(param) {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get(param);
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      loadHTML('#header', 'header.html', initHeaderDropdown);
-      loadHTML('#footer', 'footer.html');
-
-      // Preselect software if specified in URL
-      const softwareParam = getQueryParam('software');
-      if (softwareParam) {
-        const softwareSelect = document.getElementById('softwareSelect');
-        for (const option of softwareSelect.options) {
-          if (option.value === softwareParam.replace(/%20/g, ' ')) {
-            option.selected = true;
-            break;
-          }
-        }
-      }
-
-      const form = document.getElementById("orderForm");
-      const messageBox = document.getElementById("message");
-
-      form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
-
-        try {
-          const response = await fetch("https://monbackend-6wwk.onrender.com/order", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-          });
-
-          const result = await response.json();
-
-          if (response.ok) {
-            messageBox.style.color = "green";
-            messageBox.textContent = `Order placed successfully! Your command number: ${result.commande_number}`;
-            form.reset();
-          } else {
-            messageBox.style.color = "red";
-            messageBox.textContent = "Error: " + (result.error || "unknown.");
-          }
-
-        } catch (error) {
-          messageBox.style.color = "red";
-          messageBox.textContent = "Server connection error.";
-          console.error(error);
-        }
-      });
-    });
-  </script>
-
-</body>
-</html>
+  <textarea name="message" placeholder="Votre message (optionnel)"></textarea>
+  <button type="submit">Valider la commande</button>
+</form>

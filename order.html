@@ -12,7 +12,6 @@
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
       font-family: 'Montserrat', sans-serif;
       background: linear-gradient(to right, #30cfd0, #330867);
@@ -21,7 +20,6 @@
       display: flex;
       flex-direction: column;
     }
-
     .form-container {
       background-color: rgba(0, 0, 0, 0.85);
       color: white;
@@ -32,25 +30,21 @@
       width: 90%;
       margin: 40px auto;
     }
-
     .form-container h2 {
       text-align: center;
       margin-bottom: 20px;
     }
-
     form {
       display: flex;
       flex-direction: column;
       gap: 15px;
     }
-
     input, select, textarea {
       padding: 10px;
       border-radius: 8px;
       border: 1px solid #ccc;
       font-size: 1em;
     }
-
     button {
       background-color: #ffd700;
       color: #330867;
@@ -62,16 +56,13 @@
       font-weight: bold;
       transition: background-color 0.3s ease;
     }
-
     button:hover {
       background-color: #ffc400;
     }
-
     .message {
       text-align: center;
       margin-top: 15px;
     }
-
     .how-to-buy {
       background-color: #f9f9f9;
       padding: 30px;
@@ -79,12 +70,10 @@
       margin-top: 40px;
       color: #000;
     }
-
     .how-to-buy h2 {
       text-align: center;
       color: #1e3c72;
     }
-
     .how-to-buy ol {
       line-height: 1.8;
       max-width: 800px;
@@ -95,17 +84,15 @@
 </head>
 <body>
 
-  <!-- Header dynamique -->
   <div id="header"></div>
 
   <div class="form-container">
     <h2>Order Your Software</h2>
     <form id="orderForm" autocomplete="off">
-      <input type="text" name="nom" placeholder="Last Name" required>
       <input type="text" name="prenom" placeholder="First Name" required>
+      <input type="text" name="nom" placeholder="Last Name" required>
       <input type="email" name="email" placeholder="Email Address" required>
       <input type="tel" name="phone" placeholder="Phone Number (optional)">
-
       <select name="logiciel" required id="software-select">
         <option value="">-- Select Software --</option>
         <option>Architecture Pack</option>
@@ -121,7 +108,6 @@
         <option>MotionBuilder</option>
         <option>Flame</option>
       </select>
-
       <select name="paiment" required>
         <option value="">-- Select Payment Method --</option>
         <option value="Carte">Bank Card</option>
@@ -129,7 +115,6 @@
         <option value="Virement bancaire">Bank Transfer</option>
         <option value="Crypto">Crypto</option>
       </select>
-
       <select name="contact_Method">
         <option value="">-- Preferred Contact Method (optional) --</option>
         <option value="Email">Email</option>
@@ -137,13 +122,10 @@
         <option value="Telegram">Telegram</option>
         <option value="Téléphone">Phone</option>
       </select>
-
       <textarea name="message" rows="4" placeholder="Additional message (optional)"></textarea>
-
       <button type="submit">Submit Order</button>
     </form>
     <div class="message" id="message"></div>
-
     <section class="how-to-buy">
       <h2>How to Buy</h2>
       <ol>
@@ -160,17 +142,14 @@
     </section>
   </div>
 
-  <!-- Footer dynamique -->
   <div id="footer"></div>
 
-  <!-- Script d’injection dynamique -->
   <script>
     // Preselect software from query parameter
     function preselectSoftwareFromUrl() {
       const urlParams = new URLSearchParams(window.location.search);
       const softwareFromUrl = urlParams.get('software');
       if (softwareFromUrl) {
-        // Try to match option, case-insensitive and trim
         const select = document.getElementById('software-select');
         Array.from(select.options).forEach(option => {
           if (option.text.toLowerCase().trim() === decodeURIComponent(softwareFromUrl).toLowerCase().trim()) {
@@ -193,6 +172,7 @@
       if (!formData.get('contact_Method')) formData.delete('contact_Method');
       if (!formData.get('message')) formData.delete('message');
 
+      // Prepare the object to send - all keys already match your French DB
       const data = Object.fromEntries(formData.entries());
 
       try {

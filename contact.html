@@ -1,87 +1,72 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact - Neo Education</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <title>Neo Education - Order</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
+      margin: 0;
       font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(to right, #3ddad7, #2a6ec4);
-      color: #000;
+      background: linear-gradient(to right, #30cfd0, #330867);
+      color: white;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
     }
 
-    .container {
-      background-color: white;
-      padding: 30px;
-      border-radius: 12px;
-      max-width: 900px;
-      width: 95%;
-      margin: 30px auto;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
-
-    h1 {
-      font-size: 2em;
-      text-align: center;
-      margin-bottom: 30px;
-      color: #2a6ec4;
+    .order-form {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
     }
 
     form {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      color: #333;
+      max-width: 500px;
+      width: 100%;
     }
 
-    input, textarea {
-      padding: 12px 15px;
-      border: 1px solid #ccc;
+    form h2 {
+      margin-bottom: 20px;
+      color: #330867;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
       border-radius: 8px;
-      font-family: inherit;
+      border: 1px solid #ccc;
       font-size: 1em;
-    }
-
-    textarea {
-      resize: vertical;
-      min-height: 150px;
     }
 
     button {
-      background-color: #2a6ec4;
-      color: white;
+      margin-top: 20px;
+      padding: 12px 20px;
+      background-color: #ffd700;
+      color: #330867;
+      font-weight: bold;
       border: none;
-      padding: 15px;
-      border-radius: 8px;
-      font-size: 1em;
+      border-radius: 12px;
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
 
     button:hover {
-      background-color: #215bb8;
-    }
-
-    .message {
-      text-align: center;
-      margin-top: 20px;
-      font-weight: bold;
-    }
-
-    @media (max-width: 768px) {
-      form {
-        gap: 15px;
-      }
+      background-color: #ffc400;
     }
   </style>
 </head>
@@ -89,94 +74,81 @@
 
   <div id="header"></div>
 
-  <div class="container">
-    <h1>Contactez-nous</h1>
-    <form id="contactForm">
-      <input type="text" name="firstName" placeholder="Prénom" required>
-      <input type="text" name="lastName" placeholder="Nom" required>
-      <input type="email" name="email" placeholder="Adresse email" required>
-      <textarea name="subject" placeholder="Votre message" required></textarea>
-      <button type="submit">Envoyer</button>
+  <div class="order-form">
+    <form action="submit_order.php" method="POST">
+      <h2>Order Software</h2>
+
+      <label for="software">Select Software</label>
+      <select name="software" id="software">
+        <option value="Architecture Pack">Architecture Pack</option>
+        <option value="Construction & BIM">Construction & BIM</option>
+        <option value="Animation & VFX">Animation & VFX</option>
+        <option value="Autocad">Autocad</option>
+        <option value="Revit">Revit</option>
+        <option value="3ds">3ds</option>
+        <option value="Maya">Maya</option>
+        <option value="Novisworks">Novisworks</option>
+        <option value="Inventor">Inventor</option>
+        <option value="Motionbuilder">Motionbuilder</option>
+        <option value="Fusion 360">Fusion 360</option>
+        <option value="Flame">Flame</option>
+      </select>
+
+      <label for="name">Your Name</label>
+      <input type="text" name="name" id="name" required />
+
+      <label for="email">Your Email</label>
+      <input type="email" name="email" id="email" required />
+
+      <label for="message">Message (optional)</label>
+      <textarea name="message" id="message" rows="4"></textarea>
+
+      <button type="submit">Submit Order</button>
     </form>
-    <div class="message" id="message"></div>
   </div>
 
   <div id="footer"></div>
 
   <script>
-    // Charger header/footer
     function loadHTML(selector, url, callback) {
       fetch(url)
-        .then(res => {
-          if (!res.ok) throw new Error("Erreur " + res.status);
-          return res.text();
+        .then(response => {
+          if (!response.ok) throw new Error(`Erreur HTTP ${response.status}`);
+          return response.text();
         })
         .then(html => {
           document.querySelector(selector).innerHTML = html;
-          if (callback) callback();
+          if (typeof callback === "function") callback();
         })
-        .catch(error => console.error(`Erreur de chargement ${url} :`, error));
+        .catch(error => {
+          console.error(`Erreur lors du chargement de ${url}:`, error);
+        });
     }
 
     function initHeaderDropdown() {
       const header = document.querySelector('#header');
-      const button = header?.querySelector('button');
-      const dropdown = header?.querySelector('.dropdown');
+      if (!header) return;
+
+      const button = header.querySelector('button');
+      const dropdown = header.querySelector('.dropdown');
 
       if (!button || !dropdown) return;
 
-      button.addEventListener('click', (e) => {
+      button.addEventListener('click', function (e) {
         e.stopPropagation();
         dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
       });
 
-      document.addEventListener('click', (e) => {
+      document.addEventListener('click', function (e) {
         if (!button.contains(e.target) && !dropdown.contains(e.target)) {
           dropdown.style.display = 'none';
         }
       });
     }
 
-    // Gestion du formulaire
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', function () {
       loadHTML('#header', 'header.html', initHeaderDropdown);
       loadHTML('#footer', 'footer.html');
-
-      const form = document.getElementById("contactForm");
-      const messageBox = document.getElementById("message");
-
-      form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
-
-        try {
-          const response = await fetch("https://monbackend-6wwk.onrender.com/contact", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-          });
-
-          const result = await response.json();
-
-          if (response.ok) {
-            messageBox.style.color = "green";
-            messageBox.textContent = "Message envoyé avec succès.";
-            form.reset();
-          } else {
-            messageBox.style.color = "red";
-            messageBox.textContent = "Erreur : " + (result.error || "inconnue.");
-          }
-
-        } catch (error) {
-          messageBox.style.color = "red";
-          messageBox.textContent = "Erreur de connexion au serveur.";
-          console.error(error);
-        }
-      });
     });
   </script>
 

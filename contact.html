@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -90,13 +90,13 @@
   <div id="header"></div>
 
   <div class="container">
-    <h1>Contactez-nous</h1>
+    <h1>Contact Us</h1>
     <form id="contactForm">
-      <input type="text" name="firstName" placeholder="Prénom" required>
-      <input type="text" name="lastName" placeholder="Nom" required>
-      <input type="email" name="email" placeholder="Adresse email" required>
-      <textarea name="subject" placeholder="Votre message" required></textarea>
-      <button type="submit">Envoyer</button>
+      <input type="text" name="firstName" placeholder="First Name" required>
+      <input type="text" name="lastName" placeholder="Last Name" required>
+      <input type="email" name="email" placeholder="Email Address" required>
+      <textarea name="subject" placeholder="Your message" required></textarea>
+      <button type="submit">Send</button>
     </form>
     <div class="message" id="message"></div>
   </div>
@@ -104,18 +104,18 @@
   <div id="footer"></div>
 
   <script>
-    // Charger header/footer
+    // Load header/footer
     function loadHTML(selector, url, callback) {
       fetch(url)
         .then(res => {
-          if (!res.ok) throw new Error("Erreur " + res.status);
+          if (!res.ok) throw new Error("Error " + res.status);
           return res.text();
         })
         .then(html => {
           document.querySelector(selector).innerHTML = html;
           if (callback) callback();
         })
-        .catch(error => console.error(`Erreur de chargement ${url} :`, error));
+        .catch(error => console.error(`Error loading ${url}:`, error));
     }
 
     function initHeaderDropdown() {
@@ -137,7 +137,7 @@
       });
     }
 
-    // Gestion du formulaire
+    // Form handling
     document.addEventListener('DOMContentLoaded', () => {
       loadHTML('#header', 'header.html', initHeaderDropdown);
       loadHTML('#footer', 'footer.html');
@@ -164,16 +164,16 @@
 
           if (response.ok) {
             messageBox.style.color = "green";
-            messageBox.textContent = "Message envoyé avec succès.";
+            messageBox.textContent = "Message sent successfully.";
             form.reset();
           } else {
             messageBox.style.color = "red";
-            messageBox.textContent = "Erreur : " + (result.error || "inconnue.");
+            messageBox.textContent = "Error: " + (result.error || "unknown.");
           }
 
         } catch (error) {
           messageBox.style.color = "red";
-          messageBox.textContent = "Erreur de connexion au serveur.";
+          messageBox.textContent = "Server connection error.";
           console.error(error);
         }
       });

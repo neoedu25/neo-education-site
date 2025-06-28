@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Order Software - Neo Education</title>
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="ea13165e-12eb-4e4b-b524-bd8ec65b4af8"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <title>Place Your Order - Neo Education</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -15,244 +14,220 @@
 
     body {
       font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(to right, #30cfd0, #330867);
-      color: white;
-      min-height: 100vh;
+      background: linear-gradient(to right, #3ddad7, #2a6ec4);
+      color: #000;
       display: flex;
       flex-direction: column;
+      min-height: 100vh;
     }
 
-    .form-container {
-      background-color: rgba(0, 0, 0, 0.85);
-      color: white;
+    .container {
+      background-color: white;
       padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
-      max-width: 600px;
-      width: 90%;
-      margin: 40px auto;
+      border-radius: 12px;
+      max-width: 900px;
+      width: 95%;
+      margin: 30px auto;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
 
-    .form-container h2 {
+    h1 {
+      font-size: 2em;
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
+      color: #2a6ec4;
     }
 
     form {
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 20px;
     }
 
     input, select, textarea {
-      padding: 10px;
-      border-radius: 8px;
+      padding: 12px 15px;
       border: 1px solid #ccc;
+      border-radius: 8px;
+      font-family: inherit;
       font-size: 1em;
     }
 
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
     button {
-      background-color: #ffd700;
-      color: #330867;
-      padding: 12px;
+      background-color: #2a6ec4;
+      color: white;
       border: none;
+      padding: 15px;
       border-radius: 8px;
       font-size: 1em;
       cursor: pointer;
-      font-weight: bold;
       transition: background-color 0.3s ease;
     }
 
     button:hover {
-      background-color: #ffc400;
+      background-color: #215bb8;
     }
 
     .message {
       text-align: center;
-      margin-top: 15px;
+      margin-top: 20px;
+      font-weight: bold;
     }
 
-    .how-to-buy {
-      background-color: #f9f9f9;
-      padding: 30px;
-      border-radius: 12px;
-      margin-top: 40px;
-      color: #000;
-    }
-
-    .how-to-buy h2 {
-      text-align: center;
-      color: #1e3c72;
-    }
-
-    .how-to-buy ol {
-      line-height: 1.8;
-      max-width: 800px;
-      margin: 20px auto;
-      font-size: 1em;
+    @media (max-width: 768px) {
+      form {
+        gap: 15px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header dynamique -->
   <div id="header"></div>
 
-  <div class="form-container">
-    <h2>Order Your Software</h2>
+  <div class="container">
+    <h1>Place Your Order</h1>
     <form id="orderForm">
       <input type="text" name="firstName" placeholder="First Name" required>
       <input type="text" name="lastName" placeholder="Last Name" required>
       <input type="email" name="email" placeholder="Email Address" required>
-      <input type="tel" name="phone" placeholder="Phone Number (optional)">
+      <input type="tel" name="phone" placeholder="Phone Number" required>
 
-      <select name="software" required id="software-select">
-        <option value="">-- Select Software --</option>
-        <option>Architecture Pack</option>
-        <option>Construction and BIM</option>
-        <option>Animation and VFX</option>
-        <option>AutoCAD</option>
-        <option>Revit</option>
-        <option>Maya</option>
-        <option>3ds Max</option>
-        <option>Fusion 360</option>
-        <option>Inventor</option>
-        <option>Navisworks</option>
-        <option>MotionBuilder</option>
-        <option>Flame</option>
+      <select name="software" id="softwareSelect" required>
+        <option value="" disabled selected>Select Software</option>
+        <option value="Architecture Pack">Architecture Pack</option>
+        <option value="Construction and BIM">Construction & BIM</option>
+        <option value="Animation and VFX">Animation & VFX</option>
+        <option value="AutoCAD">AutoCAD</option>
+        <option value="Revit">Revit</option>
+        <option value="3ds Max">3ds Max</option>
+        <option value="Maya">Maya</option>
+        <option value="Navisworks">Navisworks</option>
+        <option value="Inventor">Inventor</option>
+        <option value="MotionBuilder">MotionBuilder</option>
+        <option value="Fusion 360">Fusion 360</option>
+        <option value="Flame">Flame</option>
       </select>
 
       <select name="paymentMethod" required>
-        <option value="">-- Select Payment Method --</option>
-        <option value="Bank Card">Bank Card</option>
+        <option value="" disabled selected>Select Payment Method</option>
+        <option value="Card">Card</option>
+        <option value="PayPal">PayPal</option>
+        <option value="Bank Transfer">Bank Transfer</option>
         <option value="Crypto">Crypto</option>
       </select>
 
       <select name="contactMethod" required>
-        <option value="">-- Preferred Contact Method --</option>
+        <option value="" disabled selected>Preferred Contact Method</option>
         <option value="Email">Email</option>
         <option value="WhatsApp">WhatsApp</option>
         <option value="Telegram">Telegram</option>
+        <option value="Phone">Phone</option>
       </select>
 
-      <textarea name="note" rows="4" placeholder="Additional message (optional)"></textarea>
-
+      <textarea name="message" placeholder="Your message (optional)"></textarea>
       <button type="submit">Submit Order</button>
     </form>
     <div class="message" id="message"></div>
-
-    <section class="how-to-buy">
-      <h2>How to Buy</h2>
-      <ol>
-        <li><strong>Complete the Form</strong><br>
-          Fill in your details carefully and submit the form.</li>
-        <li><strong>Receive Your Access Email</strong><br>
-          You'll get an official email from Autodesk with access instructions.</li>
-        <li><strong>Get Your Payment Link</strong><br>
-          A secure link will be sent via your preferred contact method.<br>
-          <em style="color: green;">Note: Payment is only requested after access is activated.</em></li>
-        <li><strong>Enjoy Your License</strong><br>
-          After payment, your license is valid for one year.</li>
-      </ol>
-    </section>
   </div>
 
-  <!-- Footer dynamique -->
   <div id="footer"></div>
 
-  <!-- Script d’injection dynamique -->
   <script>
-    // Preselect software from query parameter
-    function preselectSoftwareFromUrl() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const softwareFromUrl = urlParams.get('software');
-      if (softwareFromUrl) {
-        // Try to match option, case-insensitive and trim
-        const select = document.getElementById('software-select');
-        Array.from(select.options).forEach(option => {
-          if (option.text.toLowerCase().trim() === decodeURIComponent(softwareFromUrl).toLowerCase().trim()) {
-            option.selected = true;
-          }
-        });
-      }
-    }
-
-    const form = document.getElementById("orderForm");
-    const messageBox = document.getElementById("message");
-
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
-
-      try {
-        const response = await fetch("https://monbackend-6wwk.onrender.com/order", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(data)
-        });
-
-        const result = await response.json();
-
-        if (response.ok) {
-          messageBox.style.color = "lightgreen";
-          messageBox.textContent = "Order submitted successfully.";
-          form.reset();
-        } else {
-          messageBox.style.color = "red";
-          messageBox.textContent = "Error: " + result.error;
-        }
-
-      } catch (error) {
-        messageBox.style.color = "red";
-        messageBox.textContent = "Server connection error.";
-        console.error(error);
-      }
-    });
-
+    // Load header/footer
     function loadHTML(selector, url, callback) {
       fetch(url)
-        .then(response => {
-          if (!response.ok) throw new Error(`Erreur HTTP ${response.status}`);
-          return response.text();
+        .then(res => {
+          if (!res.ok) throw new Error("Error " + res.status);
+          return res.text();
         })
         .then(html => {
           document.querySelector(selector).innerHTML = html;
-          if (typeof callback === "function") callback();
+          if (callback) callback();
         })
-        .catch(error => {
-          console.error(`Erreur lors du chargement de ${url}:`, error);
-        });
+        .catch(error => console.error(`Error loading ${url}:`, error));
     }
 
     function initHeaderDropdown() {
       const header = document.querySelector('#header');
-      if (!header) return;
-
-      const button = header.querySelector('button');
-      const dropdown = header.querySelector('.dropdown');
+      const button = header?.querySelector('button');
+      const dropdown = header?.querySelector('.dropdown');
 
       if (!button || !dropdown) return;
 
-      button.addEventListener('click', function (e) {
+      button.addEventListener('click', (e) => {
         e.stopPropagation();
         dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
       });
 
-      document.addEventListener('click', function (e) {
+      document.addEventListener('click', (e) => {
         if (!button.contains(e.target) && !dropdown.contains(e.target)) {
           dropdown.style.display = 'none';
         }
       });
     }
 
-    document.addEventListener('DOMContentLoaded', function () {
+    // Preselect software if passed in URL
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
       loadHTML('#header', 'header.html', initHeaderDropdown);
       loadHTML('#footer', 'footer.html');
-      preselectSoftwareFromUrl();
+
+      // Preselect software if specified in URL
+      const softwareParam = getQueryParam('software');
+      if (softwareParam) {
+        const softwareSelect = document.getElementById('softwareSelect');
+        for (const option of softwareSelect.options) {
+          if (option.value === softwareParam.replace(/%20/g, ' ')) {
+            option.selected = true;
+            break;
+          }
+        }
+      }
+
+      const form = document.getElementById("orderForm");
+      const messageBox = document.getElementById("message");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        try {
+          const response = await fetch("https://monbackend-6wwk.onrender.com/order", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+          });
+
+          const result = await response.json();
+
+          if (response.ok) {
+            messageBox.style.color = "green";
+            messageBox.textContent = `Order placed successfully! Your command number: ${result.commande_number}`;
+            form.reset();
+          } else {
+            messageBox.style.color = "red";
+            messageBox.textContent = "Error: " + (result.error || "unknown.");
+          }
+
+        } catch (error) {
+          messageBox.style.color = "red";
+          messageBox.textContent = "Server connection error.";
+          console.error(error);
+        }
+      });
     });
   </script>
 

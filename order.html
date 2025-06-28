@@ -1,43 +1,116 @@
-<form id="orderForm">
-  <input type="text" name="nom" placeholder="Nom" required>
-  <input type="text" name="prenom" placeholder="Prénom" required>
-  <input type="email" name="email" placeholder="Email" required>
-  
-  <!-- Phone is optional -->
-  <input type="tel" name="phone" placeholder="Téléphone (optionnel)">
-  
-  <select name="logiciel" id="softwareSelect" required>
-    <option value="" disabled selected>Choisissez le logiciel</option>
-    <option value="Architecture Pack">Architecture Pack</option>
-    <option value="Construction and BIM">Construction & BIM</option>
-    <option value="Animation and VFX">Animation & VFX</option>
-    <option value="AutoCAD">AutoCAD</option>
-    <option value="Revit">Revit</option>
-    <option value="3ds Max">3ds Max</option>
-    <option value="Maya">Maya</option>
-    <option value="Navisworks">Navisworks</option>
-    <option value="Inventor">Inventor</option>
-    <option value="MotionBuilder">MotionBuilder</option>
-    <option value="Fusion 360">Fusion 360</option>
-    <option value="Flame">Flame</option>
-  </select>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Commander un Logiciel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: Arial, sans-serif; padding: 2em; background: #f9f9f9; }
+    form { background: #fff; padding: 2em; border-radius: 8px; max-width: 500px; margin: auto; box-shadow: 0 0 10px #eee; }
+    label { display: block; margin-top: 1em; font-weight: bold; }
+    input, select, textarea, button { width: 100%; padding: .5em; margin-top: .3em; border-radius: 4px; border: 1px solid #ccc; font-size: 1em; }
+    button { background: #007bff; color: white; border: none; cursor: pointer; margin-top: 1.5em; }
+    button:hover { background: #0056b3; }
+    .optional { font-weight: normal; color: #666; font-size: .95em; }
+    .success { color: green; text-align: center; margin-top: 1em; }
+    .error { color: red; text-align: center; margin-top: 1em; }
+  </style>
+</head>
+<body>
+  <h2>Commander un Logiciel</h2>
+  <form id="orderForm" autocomplete="off">
+    <label for="nom">Nom *</label>
+    <input type="text" name="nom" id="nom" required>
 
-  <select name="paiment" required>
-    <option value="" disabled selected>Mode de paiement</option>
-    <option value="Carte">Carte</option>
-    <option value="PayPal">PayPal</option>
-    <option value="Virement bancaire">Virement bancaire</option>
-    <option value="Crypto">Crypto</option>
-  </select>
+    <label for="prenom">Prénom *</label>
+    <input type="text" name="prenom" id="prenom" required>
 
-  <select name="contact_Method" required>
-    <option value="" disabled selected>Méthode de contact préférée</option>
-    <option value="Email">Email</option>
-    <option value="WhatsApp">WhatsApp</option>
-    <option value="Telegram">Telegram</option>
-    <option value="Téléphone">Téléphone</option>
-  </select>
+    <label for="email">Email *</label>
+    <input type="email" name="email" id="email" required>
 
-  <textarea name="message" placeholder="Votre message (optionnel)"></textarea>
-  <button type="submit">Valider la commande</button>
-</form>
+    <label for="phone">Téléphone <span class="optional">(optionnel)</span></label>
+    <input type="tel" name="phone" id="phone" placeholder="06 12 34 56 78">
+
+    <label for="logiciel">Logiciel *</label>
+    <select name="logiciel" id="logiciel" required>
+      <option value="" disabled selected>Choisissez le logiciel</option>
+      <option value="Architecture Pack">Architecture Pack</option>
+      <option value="Construction and BIM">Construction & BIM</option>
+      <option value="Animation and VFX">Animation & VFX</option>
+      <option value="AutoCAD">AutoCAD</option>
+      <option value="Revit">Revit</option>
+      <option value="3ds Max">3ds Max</option>
+      <option value="Maya">Maya</option>
+      <option value="Navisworks">Navisworks</option>
+      <option value="Inventor">Inventor</option>
+      <option value="MotionBuilder">MotionBuilder</option>
+      <option value="Fusion 360">Fusion 360</option>
+      <option value="Flame">Flame</option>
+    </select>
+
+    <label for="paiment">Mode de paiement *</label>
+    <select name="paiment" id="paiment" required>
+      <option value="" disabled selected>Choisissez le mode de paiement</option>
+      <option value="Carte">Carte</option>
+      <option value="PayPal">PayPal</option>
+      <option value="Virement bancaire">Virement bancaire</option>
+      <option value="Crypto">Crypto</option>
+    </select>
+
+    <label for="contact_Method">Méthode de contact préférée <span class="optional">(optionnel)</span></label>
+    <select name="contact_Method" id="contact_Method">
+      <option value="" disabled selected>Choisissez (optionnel)</option>
+      <option value="Email">Email</option>
+      <option value="WhatsApp">WhatsApp</option>
+      <option value="Telegram">Telegram</option>
+      <option value="Téléphone">Téléphone</option>
+    </select>
+
+    <label for="message">Message <span class="optional">(optionnel)</span></label>
+    <textarea name="message" id="message" placeholder="Votre message (optionnel)"></textarea>
+    
+    <button type="submit">Valider la commande</button>
+    <div id="formResponse"></div>
+  </form>
+
+  <script>
+    const form = document.getElementById('orderForm');
+    const responseDiv = document.getElementById('formResponse');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      responseDiv.textContent = '';
+      responseDiv.className = '';
+      const formData = new FormData(form);
+
+      // Remove empty optional fields from the payload
+      if (!formData.get('phone')) formData.delete('phone');
+      if (!formData.get('contact_Method')) formData.delete('contact_Method');
+      if (!formData.get('message')) formData.delete('message');
+
+      const data = Object.fromEntries(formData.entries());
+
+      try {
+        const r = await fetch('/api/commander', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        const res = await r.json();
+        if (r.ok && res.success) {
+          responseDiv.textContent = `Commande enregistrée ! Numéro de commande : ${res.commande_number}`;
+          responseDiv.className = 'success';
+          form.reset();
+        } else {
+          responseDiv.textContent = res.message || 'Erreur lors de l\'envoi de la commande.';
+          responseDiv.className = 'error';
+        }
+      } catch (err) {
+        responseDiv.textContent = 'Erreur réseau ou serveur.';
+        responseDiv.className = 'error';
+      }
+    });
+  </script>
+</body>
+</html>

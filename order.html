@@ -106,7 +106,7 @@
       <input type="email" name="email" placeholder="Email Address" required>
       <input type="tel" name="phone" placeholder="Phone Number (optional)">
 
-      <select name="software" required>
+      <select name="software" required id="software-select">
         <option value="">-- Select Software --</option>
         <option>Architecture Pack</option>
         <option>Construction and BIM</option>
@@ -162,6 +162,21 @@
 
   <!-- Script d’injection dynamique -->
   <script>
+    // Preselect software from query parameter
+    function preselectSoftwareFromUrl() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const softwareFromUrl = urlParams.get('software');
+      if (softwareFromUrl) {
+        // Try to match option, case-insensitive and trim
+        const select = document.getElementById('software-select');
+        Array.from(select.options).forEach(option => {
+          if (option.text.toLowerCase().trim() === decodeURIComponent(softwareFromUrl).toLowerCase().trim()) {
+            option.selected = true;
+          }
+        });
+      }
+    }
+
     const form = document.getElementById("orderForm");
     const messageBox = document.getElementById("message");
 
@@ -237,6 +252,7 @@
     document.addEventListener('DOMContentLoaded', function () {
       loadHTML('#header', 'header.html', initHeaderDropdown);
       loadHTML('#footer', 'footer.html');
+      preselectSoftwareFromUrl();
     });
   </script>
 

@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Order Software - Neo Education</title>
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="ea13165e-12eb-4e4b-b524-bd8ec65b4af8"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <title>Contact - Neo Education</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -15,228 +14,169 @@
 
     body {
       font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(to right, #30cfd0, #330867);
-      color: white;
-      min-height: 100vh;
+      background: linear-gradient(to right, #3ddad7, #2a6ec4);
+      color: #000;
       display: flex;
       flex-direction: column;
+      min-height: 100vh;
     }
 
-    .products {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
+    .container {
+      background-color: white;
       padding: 30px;
-      flex: 1;
+      border-radius: 12px;
+      max-width: 900px;
+      width: 95%;
+      margin: 30px auto;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
 
-    .product {
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      width: 250px;
-      padding: 20px;
+    h1 {
+      font-size: 2em;
       text-align: center;
-      color: #333;
-      transition: transform 0.3s ease;
+      margin-bottom: 30px;
+      color: #2a6ec4;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    input, textarea {
+      padding: 12px 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 1em;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    button {
+      background-color: #2a6ec4;
+      color: white;
+      border: none;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 1em;
       cursor: pointer;
-      text-decoration: none;
+      transition: background-color 0.3s ease;
     }
 
-    .product:hover {
-      transform: translateY(-5px);
+    button:hover {
+      background-color: #215bb8;
     }
 
-    .product img {
-      width: 100%;
-      height: 150px;
-      object-fit: contain;
-    }
-
-    .product h3 {
-      margin: 15px 0 10px;
-      color: #222;
-    }
-
-    .price {
-      margin: 10px 0;
-    }
-
-    .old-price {
-      text-decoration: line-through;
-      color: #888;
-      margin-right: 10px;
-    }
-
-    .new-price {
-      font-size: 1.3em;
-      color: #e63946;
+    .message {
+      text-align: center;
+      margin-top: 20px;
       font-weight: bold;
     }
 
-    .order-button {
-      display: inline-block;
-      background-color: #ffd700;
-      color: #d90429;
-      font-weight: bold;
-      padding: 10px 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      text-decoration: none;
-      margin-top: 10px;
-      transition: all 0.3s ease;
-    }
-
-    .order-button:hover {
-      background-color: #ffc400;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    @media (max-width: 768px) {
+      form {
+        gap: 15px;
+      }
     }
   </style>
 </head>
 <body>
 
   <div id="header"></div>
-  <div id="header"></div>
 
-  <div class="form-container">
-    <h2>Order Your Software</h2>
-    <form id="orderForm">
-      <input type="text" name="firstName" placeholder="First Name" required>
-      <input type="text" name="lastName" placeholder="Last Name" required>
-      <input type="email" name="email" placeholder="Email Address" required>
-      <input type="tel" name="phone" placeholder="Phone Number (optional)">
-
-      <select name="software" required>
-        <option value="">-- Select Software --</option>
-        <option>Architecture Pack</option>
-        <option>Construction and BIM</option>
-        <option>Animation and VFX</option>
-        <option>AutoCAD</option>
-        <option>Revit</option>
-        <option>Maya</option>
-        <option>3ds Max</option>
-        <option>Fusion 360</option>
-        <option>Inventor</option>
-        <option>Navisworks</option>
-        <option>MotionBuilder</option>
-        <option>Flame</option>
-      </select>
-
-      <select name="paymentMethod" required>
-        <option value="">-- Select Payment Method --</option>
-        <option value="Bank Card">Bank Card</option>
-        <option value="Crypto">Crypto</option>
-      </select>
-
-      <select name="contactMethod" required>
-        <option value="">-- Preferred Contact Method --</option>
-        <option value="Email">Email</option>
-        <option value="WhatsApp">WhatsApp</option>
-        <option value="Telegram">Telegram</option>
-      </select>
-
-      <textarea name="note" rows="4" placeholder="Additional message (optional)"></textarea>
-
-      <button type="submit">Submit Order</button>
+  <div class="container">
+    <h1>Contactez-nous</h1>
+    <form id="contactForm">
+      <input type="text" name="firstName" placeholder="Prénom" required>
+      <input type="text" name="lastName" placeholder="Nom" required>
+      <input type="email" name="email" placeholder="Adresse email" required>
+      <textarea name="subject" placeholder="Votre message" required></textarea>
+      <button type="submit">Envoyer</button>
     </form>
     <div class="message" id="message"></div>
-
-    <section class="how-to-buy">
-      <h2 style="text-align: center; color: #1e3c72;">How to Buy</h2>
-      <ol style="line-height: 1.8; max-width: 800px; margin: 20px auto; font-size: 1em;">
-        <li><strong>Complete the Form</strong><br>
-          Fill in your details carefully and submit the form. This helps us process your request quickly and accurately.</li>
-        <li><strong>Receive Your Access Email</strong><br>
-          Shortly after submitting the form, you will receive an official invitation email from Autodesk. This email will allow you to create your account and gain access to the requested software.</li>
-        <li><strong>Get Your Payment Link</strong><br>
-          Once your access has been successfully activated, you will receive a secure payment link via your preferred contact method (Email, WhatsApp, or Telegram).<br>
-          <em style="color: green;">Note: Payment is only requested after your access is confirmed and active.</em></li>
-        <li><strong>Enjoy Your License</strong><br>
-          Once your payment is confirmed, your license remains valid for a full year, and you will enjoy access to the latest official Autodesk tools.</li>
-      </ol>
-    </section>
   </div>
 
   <div id="footer"></div>
 
   <script>
-    const form = document.getElementById("orderForm");
-    const messageBox = document.getElementById("message");
-
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
-
-      try {
-        const response = await fetch("https://monbackend-6wwk.onrender.com/order", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(data)
-        });
-
-        const result = await response.json();
-
-        if (response.ok) {
-          messageBox.style.color = "lightgreen";
-          messageBox.textContent = "Order submitted successfully.";
-          form.reset();
-        } else {
-          messageBox.style.color = "red";
-          messageBox.textContent = "Error: " + result.error;
-        }
-
-      } catch (error) {
-        messageBox.style.color = "red";
-        messageBox.textContent = "Server connection error.";
-        console.error(error);
-      }
-    });
-
-    // Chargement dynamique du header et footer
+    // Charger header/footer
     function loadHTML(selector, url, callback) {
       fetch(url)
-        .then(response => {
-          if (!response.ok) throw new Error(`Erreur HTTP ${response.status}`);
-          return response.text();
+        .then(res => {
+          if (!res.ok) throw new Error("Erreur " + res.status);
+          return res.text();
         })
         .then(html => {
           document.querySelector(selector).innerHTML = html;
-          if (typeof callback === "function") callback();
+          if (callback) callback();
         })
-        .catch(error => {
-          console.error(`Erreur lors du chargement de ${url}:`, error);
-        });
+        .catch(error => console.error(`Erreur de chargement ${url} :`, error));
     }
 
     function initHeaderDropdown() {
       const header = document.querySelector('#header');
-      if (!header) return;
-
-      const button = header.querySelector('button');
-      const dropdown = header.querySelector('.dropdown');
+      const button = header?.querySelector('button');
+      const dropdown = header?.querySelector('.dropdown');
 
       if (!button || !dropdown) return;
 
-      button.addEventListener('click', function (e) {
+      button.addEventListener('click', (e) => {
         e.stopPropagation();
         dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
       });
 
-      document.addEventListener('click', function (e) {
+      document.addEventListener('click', (e) => {
         if (!button.contains(e.target) && !dropdown.contains(e.target)) {
           dropdown.style.display = 'none';
         }
       });
     }
 
-    document.addEventListener('DOMContentLoaded', function () {
+    // Gestion du formulaire
+    document.addEventListener('DOMContentLoaded', () => {
       loadHTML('#header', 'header.html', initHeaderDropdown);
       loadHTML('#footer', 'footer.html');
+
+      const form = document.getElementById("contactForm");
+      const messageBox = document.getElementById("message");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        try {
+          const response = await fetch("https://monbackend-6wwk.onrender.com/contact", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+          });
+
+          const result = await response.json();
+
+          if (response.ok) {
+            messageBox.style.color = "green";
+            messageBox.textContent = "Message envoyé avec succès.";
+            form.reset();
+          } else {
+            messageBox.style.color = "red";
+            messageBox.textContent = "Erreur : " + (result.error || "inconnue.");
+          }
+
+        } catch (error) {
+          messageBox.style.color = "red";
+          messageBox.textContent = "Erreur de connexion au serveur.";
+          console.error(error);
+        }
+      });
     });
   </script>
 

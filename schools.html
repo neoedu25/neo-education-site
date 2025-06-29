@@ -5,47 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>For Schools and Teachers - Neo Education</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <!-- AOS CSS for scroll animations -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Montserrat', sans-serif;
       background: linear-gradient(to right, #30cfd0, #330867);
-      color: white;
+      color: #222;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
     .schools-container {
-      background-color: rgba(0, 0, 0, 0.85);
-      color: white;
-      padding: 35px 30px 30px 30px;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      background-color: #fff;
+      color: #222;
+      padding: 38px 32px 34px 32px;
+      border-radius: 18px;
+      box-shadow: 0 6px 32px rgba(0,0,0,0.12);
       max-width: 900px;
       width: 96%;
-      margin: 40px auto;
+      margin: 48px auto 40px auto;
       display: flex;
       flex-direction: column;
       align-items: center;
+      transition: box-shadow 0.3s;
     }
     .schools-container h2 {
       text-align: center;
       margin-bottom: 18px;
-      color: #ffd700;
+      color: #330867;
       font-size: 2.1em;
+      letter-spacing: 0.5px;
     }
     .schools-container h3 {
-      color: #ffd700;
-      margin: 20px 0 10px 0;
-      font-size: 1.25em;
+      color: #30cfd0;
+      margin: 24px 0 10px 0;
+      font-size: 1.23em;
       text-align: left;
       width: 100%;
     }
     .schools-container p {
       margin-bottom: 16px;
-      font-size: 1.08em;
-      line-height: 1.7;
+      font-size: 1.09em;
+      line-height: 1.75;
       width: 100%;
+      color: #222;
     }
     .schools-container ul {
       margin-bottom: 18px;
@@ -54,37 +59,39 @@
       line-height: 1.7;
       width: 100%;
       list-style: disc;
+      color: #333;
     }
     .schools-container .quote-btn {
       display: inline-block;
       background-color: #ffd700;
-      color: #d90429;
+      color: #330867;
       font-weight: bold;
       padding: 15px 34px;
-      font-size: 1.1em;
+      font-size: 1.09em;
       border-radius: 14px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.13);
       text-decoration: none;
       margin-top: 32px;
       transition: all 0.3s ease;
       letter-spacing: 0.5px;
+      border: none;
     }
     .schools-container .quote-btn:hover {
       background-color: #ffc400;
-      color: #a20020;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+      color: #222;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
     }
     .schools-container .testimonials {
       margin: 18px 0 18px 0;
       width: 100%;
     }
     .schools-container .testimonials .quote {
-      background: rgba(255, 215, 0, 0.13);
-      border-left: 5px solid #ffd700;
+      background: rgba(51, 12, 103, 0.07);
+      border-left: 5px solid #30cfd0;
       border-radius: 6px;
       margin-bottom: 10px;
       padding: 11px 18px;
-      color: #ffd700;
+      color: #330867;
       font-style: italic;
       font-size: 1em;
     }
@@ -94,13 +101,21 @@
     }
     .schools-container .works-with span {
       display: inline-block;
-      background: rgba(255,255,255,0.12);
+      background: rgba(48,207,208,0.11);
       padding: 7px 13px;
       border-radius: 7px;
       margin: 4px 7px 4px 0;
-      color: #ffd700;
+      color: #330867;
       font-weight: bold;
       font-size: 0.97em;
+    }
+    ol.choices {
+      margin-left: 24px;
+      width: 100%;
+      color: #333;
+    }
+    .schools-container strong {
+      color: #30cfd0;
     }
     @media (max-width: 600px) {
       .schools-container {
@@ -119,12 +134,12 @@
 <body>
   <div id="header"></div>
 
-  <div class="schools-container">
+  <div class="schools-container" data-aos="zoom-in">
     <h2>The Smartest Way to Equip Your Classroom with Pro Software</h2>
-    <p style="font-size:1.18em; font-weight:bold; color:#fff; text-align:center;">Finally – professional design tools that work the way teachers actually teach!</p>
+    <p style="font-size:1.18em; font-weight:bold; color:#330867; text-align:center;">Finally – professional design tools that work the way teachers actually teach!</p>
     <p>
       Stop wasting money on rigid licenses that collect dust between semesters. Our smart education licensing gives you the freedom to:<br>
-      <span style="color:#ffd700; font-weight:bold;">Reuse. Reassign. Repeat.</span>
+      <span style="color:#30cfd0; font-weight:bold;">Reuse. Reassign. Repeat.</span>
     </p>
     <ul>
       <li>Buy one set of licenses &amp; an admin access</li>
@@ -153,15 +168,15 @@
       <span>And more!</span>
     </div>
     <h3>The Choice Is Simple:</h3>
-    <ol style="margin-left:24px; width: 100%;">
+    <ol class="choices">
       <li>Keep struggling with inflexible licenses</li>
       <li>Switch to the only system designed for real classrooms</li>
     </ol>
     <p>
-      <strong style="color:#ffd700;">👉 Tell us your school/channel, needed tools, and seat count – we’ll send a custom solution in 24h!</strong>
+      <strong>👉 Tell us your school/channel, needed tools, and seat count – we’ll send a custom solution in 24h!</strong>
     </p>
-    <p style="font-size:1.12em; color:#ffd700; font-weight:bold;">Limited educator pricing available.<br>Contact us NOW. Get your custom quote!</p>
-    <a class="quote-btn" href="https://www.neoedu.xyz/contact">Get your Quote</a>
+    <p style="font-size:1.12em; color:#330867; font-weight:bold;">Limited educator pricing available.<br>Contact us NOW. Get your custom quote!</p>
+    <a class="quote-btn" href="https://www.neoedu.xyz/contact" data-aos="fade-up">Get your Quote</a>
   </div>
 
   <div id="footer"></div>
@@ -202,6 +217,15 @@
     document.addEventListener('DOMContentLoaded', function () {
       loadHTML('#header', 'header.html', initHeaderDropdown);
       loadHTML('#footer', 'footer.html');
+    });
+  </script>
+  <!-- AOS JS for scroll animations -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      once: false,
+      mirror: true
     });
   </script>
 </body>

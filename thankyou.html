@@ -10,11 +10,11 @@
       font-family: 'Montserrat', sans-serif;
       background: linear-gradient(to right, #30cfd0, #330867);
       color: white;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
-      min-height: 100vh;
+      align-items: center;
       text-align: center;
       padding: 20px;
     }
@@ -26,6 +26,7 @@
       box-shadow: 0 4px 22px rgba(0,0,0,0.18);
       max-width: 600px;
       width: 100%;
+      margin: 60px auto 40px auto;
     }
     h1 {
       color: #2a6ec4;
@@ -68,6 +69,8 @@
   </style>
 </head>
 <body>
+  <div id="header"></div>
+
   <div class="confirmation-box">
     <div class="icon">✓</div>
     <h1>Thank You!</h1>
@@ -81,5 +84,46 @@
     </div>
     <a class="back-home" href="index.html">Back to Home</a>
   </div>
+
+  <div id="footer"></div>
+
+  <script>
+    function loadHTML(selector, url, callback) {
+      fetch(url)
+        .then(response => {
+          if (!response.ok) throw new Error(`Erreur HTTP ${response.status}`);
+          return response.text();
+        })
+        .then(html => {
+          document.querySelector(selector).innerHTML = html;
+          if (typeof callback === "function") callback();
+        })
+        .catch(error => {
+          console.error(`Erreur lors du chargement de ${url}:`, error);
+        });
+    }
+
+    function initHeaderDropdown() {
+      const header = document.querySelector('#header');
+      if (!header) return;
+      const button = header.querySelector('button');
+      const dropdown = header.querySelector('.dropdown');
+      if (!button || !dropdown) return;
+      button.addEventListener('click', function (e) {
+        e.stopPropagation();
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+      });
+      document.addEventListener('click', function (e) {
+        if (!button.contains(e.target) && !dropdown.contains(e.target)) {
+          dropdown.style.display = 'none';
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      loadHTML('#header', 'header.html', initHeaderDropdown);
+      loadHTML('#footer', 'footer.html');
+    });
+  </script>
 </body>
 </html>

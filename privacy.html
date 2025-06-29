@@ -3,63 +3,60 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Confidentiality Policy</title>
+  <title>Privacy Policy - Neo Education</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to right, #3ddad7, #2a6ec4);
-      color: #000000;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(to right, #30cfd0, #330867);
+      color: white;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
     }
-    header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 20px;
-      justify-content: center;
+    .policy-container {
+      background-color: rgba(0, 0, 0, 0.85);
+      color: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      max-width: 900px;
+      width: 95%;
+      margin: 40px auto;
     }
-    .logo {
-      height: 50px;
-    }
-    h1 {
-      font-size: 2em;
-      margin-bottom: 10px;
+    .policy-container h2 {
       text-align: center;
+      margin-bottom: 25px;
     }
-    .content {
-      max-width: 800px;
-      text-align: left;
-      padding: 20px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      margin: 20px auto;
-      flex: 1;
+    .policy-container h3 {
+      color: #ffd700;
+      margin: 24px 0 8px 0;
     }
-    footer {
-      padding: 20px;
-      background-color: white;
-      text-align: center;
-      font-weight: bold;
-      margin-top: auto;
+    .policy-container p,
+    .policy-container ul,
+    .policy-container ol {
+      margin-bottom: 18px;
+      font-size: 1em;
+      line-height: 1.7;
     }
-    footer a {
-      margin: 0 15px;
-      text-decoration: none;
-      color: black;
+    @media (max-width: 600px) {
+      .policy-container {
+        padding: 12px;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="Logo.png" alt="Neo Education Logo" class="logo" />
-    <h1>Confidentiality Policy</h1>
-  </header>
 
-  <div class="content">
+  <div id="header"></div>
+
+  <div class="policy-container">
+    <h2>Confidentiality Policy</h2>
     <p>
       At Neo Education, we respect and protect your privacy. All personal data collected is processed according to the General Data Protection Regulation (GDPR) of the European Union.
     </p>
@@ -71,11 +68,49 @@
     </p>
   </div>
 
-  <footer>
-    <a href="index.html">Home</a>
-    <a href="about.html">About Us</a>
-    <a href="privacy.html">Privacy Policy</a>
-    <a href="refund_policy.html">Refund Policy</a>
-  </footer>
+  <div id="footer"></div>
+
+  <script>
+    function loadHTML(selector, url, callback) {
+      fetch(url)
+        .then(response => {
+          if (!response.ok) throw new Error(`Erreur HTTP ${response.status}`);
+          return response.text();
+        })
+        .then(html => {
+          document.querySelector(selector).innerHTML = html;
+          if (typeof callback === "function") callback();
+        })
+        .catch(error => {
+          console.error(`Erreur lors du chargement de ${url}:`, error);
+        });
+    }
+
+    function initHeaderDropdown() {
+      const header = document.querySelector('#header');
+      if (!header) return;
+
+      const button = header.querySelector('button');
+      const dropdown = header.querySelector('.dropdown');
+
+      if (!button || !dropdown) return;
+
+      button.addEventListener('click', function (e) {
+        e.stopPropagation();
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!button.contains(e.target) && !dropdown.contains(e.target)) {
+          dropdown.style.display = 'none';
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      loadHTML('#header', 'header.html', initHeaderDropdown);
+      loadHTML('#footer', 'footer.html');
+    });
+  </script>
 </body>
 </html>

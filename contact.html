@@ -188,10 +188,8 @@
           const result = await response.json();
 
           if (response.ok && result.success) {
-            messageBox.style.color = "green";
-            messageBox.textContent = "Message sent successfully.";
-            form.reset();
-            setCaptcha();
+            // Redirect to thank you page
+            window.location.href = "/thankyou.html";
           } else {
             messageBox.style.color = "red";
             messageBox.textContent = "Error: " + (result.error || "unknown.");

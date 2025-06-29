@@ -19,26 +19,51 @@
       padding: 20px;
     }
     .confirmation-box {
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.93);
       color: #333;
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      padding: 44px 36px 36px 36px;
+      border-radius: 16px;
+      box-shadow: 0 4px 22px rgba(0,0,0,0.18);
       max-width: 600px;
+      width: 100%;
     }
     h1 {
       color: #2a6ec4;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
+      font-size: 2.2em;
     }
     p {
-      font-size: 1.1em;
-      line-height: 1.6;
-      margin-bottom: 30px;
+      font-size: 1.18em;
+      line-height: 1.7;
+      margin-bottom: 24px;
     }
     .icon {
-      font-size: 60px;
+      font-size: 62px;
       color: #4CAF50;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
+    }
+    .contact-info {
+      font-size: 1em;
+      color: #2a6ec4;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    .back-home {
+      display: inline-block;
+      margin-top: 18px;
+      background-color: #ffd700;
+      color: #2a6ec4;
+      font-weight: bold;
+      padding: 12px 32px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: 1.06em;
+      transition: background 0.2s, color 0.2s;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    }
+    .back-home:hover {
+      background-color: #ffc400;
+      color: #d90429;
     }
   </style>
 </head>
@@ -46,8 +71,15 @@
   <div class="confirmation-box">
     <div class="icon">✓</div>
     <h1>Thank You!</h1>
-    <p>We have received your informations and will contact you shortly.</p>
-    <p>For any questions, please contact us directly at <strong>benbellaahmed537@gmail.com</strong></p>
+    <p>
+      We have received your information and will contact you shortly.<br>
+      Our team will review your request and reply by email within 24 hours (often much sooner).
+    </p>
+    <div class="contact-info">
+      For urgent questions, contact us directly:<br>
+      <strong>benbellaahmed537@gmail.com</strong>
+    </div>
+    <a class="back-home" href="index.html">Back to Home</a>
   </div>
 </body>
 </html>

@@ -6,6 +6,8 @@
   <title>Order Software - Neo Education</title>
   <script defer src="https://cloud.umami.is/script.js" data-website-id="ea13165e-12eb-4e4b-b524-bd8ec65b4af8"></script>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <!-- AOS CSS for scroll animations -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -86,7 +88,24 @@
 
   <div id="header"></div>
 
-  <div class="form-container">
+  <!-- How to Buy section moved before the form, with fade-right animation -->
+  <section class="how-to-buy" data-aos="fade-right">
+    <h2>How to Buy</h2>
+    <ol>
+      <li><strong>Complete the Form</strong><br>
+        Fill in your details carefully and submit the form.</li>
+      <li><strong>Receive Your Access Email</strong><br>
+        You'll get an official email from Autodesk with access instructions.</li>
+      <li><strong>Get Your Payment Link</strong><br>
+        A secure link will be sent via your preferred contact method.<br>
+        <em style="color: green;">Note: Payment is only requested after access is activated.</em></li>
+      <li><strong>Enjoy Your License</strong><br>
+        After payment, your license is valid for one year.</li>
+    </ol>
+  </section>
+
+  <!-- The form now comes after, with fade-left animation -->
+  <div class="form-container" data-aos="fade-left">
     <h2>Order Your Software</h2>
     <form id="orderForm" autocomplete="off">
       <input type="text" name="prenom" placeholder="First Name" required>
@@ -136,20 +155,6 @@
       <button type="submit">Submit Order</button>
     </form>
     <div class="message" id="message"></div>
-    <section class="how-to-buy">
-      <h2>How to Buy</h2>
-      <ol>
-        <li><strong>Complete the Form</strong><br>
-          Fill in your details carefully and submit the form.</li>
-        <li><strong>Receive Your Access Email</strong><br>
-          You'll get an official email from Autodesk with access instructions.</li>
-        <li><strong>Get Your Payment Link</strong><br>
-          A secure link will be sent via your preferred contact method.<br>
-          <em style="color: green;">Note: Payment is only requested after access is activated.</em></li>
-        <li><strong>Enjoy Your License</strong><br>
-          After payment, your license is valid for one year.</li>
-      </ol>
-    </section>
   </div>
 
   <div id="footer"></div>
@@ -264,6 +269,14 @@
     setCaptcha();
   });
 </script>
-
+<!-- AOS JS for scroll animations -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 850,
+    once: false,   // animate every time scroll in/out
+    mirror: true   // animate out when leaving
+  });
+</script>
 </body>
 </html>

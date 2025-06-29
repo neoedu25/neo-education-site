@@ -4,161 +4,204 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>For Schools and Teachers - Neo Education</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <!-- AOS CSS for scroll animations -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(to right, #30cfd0, #330867);
-      color: #222;
+      background: linear-gradient(to right, #3ddad7, #2a6ec4);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
     }
-    .schools-container {
-      background-color: #fff;
-      color: #222;
-      padding: 38px 32px 34px 32px;
-      border-radius: 18px;
-      box-shadow: 0 6px 32px rgba(0,0,0,0.12);
+    .container {
+      background-color: #111;
+      color: #fff;
+      padding: 32px 24px 28px 24px;
+      border-radius: 14px;
       max-width: 900px;
-      width: 96%;
-      margin: 48px auto 40px auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transition: box-shadow 0.3s;
+      width: 95%;
+      margin: 36px auto 34px auto;
+      box-shadow: 0 6px 32px rgba(0,0,0,0.25);
     }
-    .schools-container h2 {
+    h1 {
+      font-size: 2em;
       text-align: center;
       margin-bottom: 18px;
-      color: #330867;
-      font-size: 2.1em;
+      color: #3ddad7;
       letter-spacing: 0.5px;
     }
-    .schools-container h3 {
-      color: #30cfd0;
-      margin: 24px 0 10px 0;
-      font-size: 1.23em;
-      text-align: left;
-      width: 100%;
+    .schools-intro {
+      font-size: 1.13em;
+      font-weight: bold;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 12px;
     }
-    .schools-container p {
+    .schools-p {
       margin-bottom: 16px;
-      font-size: 1.09em;
-      line-height: 1.75;
-      width: 100%;
-      color: #222;
+      font-size: 1em;
+      line-height: 1.7;
+      color: #eee;
+      text-align: center;
     }
-    .schools-container ul {
+    .schools-p span {
+      color: #3ddad7;
+      font-weight: bold;
+    }
+    .schools-ul,
+    .choices,
+    .schools-cta {
+      color: #fff !important;
+    }
+    .schools-ul {
       margin-bottom: 18px;
       margin-left: 22px;
       font-size: 1em;
       line-height: 1.7;
-      width: 100%;
-      list-style: disc;
-      color: #333;
     }
-    .schools-container .quote-btn {
-      display: inline-block;
-      background-color: #ffd700;
-      color: #330867;
-      font-weight: bold;
-      padding: 15px 34px;
-      font-size: 1.09em;
-      border-radius: 14px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.13);
-      text-decoration: none;
-      margin-top: 32px;
-      transition: all 0.3s ease;
-      letter-spacing: 0.5px;
-      border: none;
-    }
-    .schools-container .quote-btn:hover {
-      background-color: #ffc400;
-      color: #222;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
-    }
-    .schools-container .testimonials {
-      margin: 18px 0 18px 0;
+    .schools-h3 {
+      color: #3ddad7;
+      margin: 24px 0 10px 0;
+      font-size: 1.14em;
+      text-align: left;
       width: 100%;
     }
-    .schools-container .testimonials .quote {
-      background: rgba(51, 12, 103, 0.07);
-      border-left: 5px solid #30cfd0;
+    .testimonials {
+      margin: 10px 0 16px 0;
+      width: 100%;
+    }
+    .testimonials .quote {
+      background: #18304a;
+      border-left: 5px solid #3ddad7;
       border-radius: 6px;
       margin-bottom: 10px;
       padding: 11px 18px;
-      color: #330867;
+      color: #fff;
       font-style: italic;
       font-size: 1em;
     }
-    .schools-container .works-with {
+    .works-with {
       margin: 18px 0 18px 0;
       width: 100%;
     }
-    .schools-container .works-with span {
+    .works-with span {
       display: inline-block;
-      background: rgba(48,207,208,0.11);
+      background: #2a6ec4;
       padding: 7px 13px;
       border-radius: 7px;
       margin: 4px 7px 4px 0;
-      color: #330867;
+      color: #fff;
       font-weight: bold;
       font-size: 0.97em;
     }
     ol.choices {
       margin-left: 24px;
       width: 100%;
-      color: #333;
     }
-    .schools-container strong {
-      color: #30cfd0;
+    .schools-cta, .schools-price {
+      color: #fff !important;
+      font-weight: bold;
+      font-size: 1.07em;
+      text-align: center;
+      margin-top: 10px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-top: 24px;
+    }
+    input, textarea {
+      padding: 12px 15px;
+      border: 1.5px solid #3ddad7;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 1em;
+      background: #222;
+      color: #fff;
+      transition: border 0.2s, background 0.2s;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border: 1.5px solid #fff;
+      background: #26364a;
+      color: #fff;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+    button {
+      background-color: #3ddad7;
+      color: #111;
+      border: none;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #2a6ec4;
+      color: #fff;
+    }
+    .message {
+      text-align: center;
+      margin-top: 18px;
+      font-weight: bold;
+      color: #3ddad7;
     }
     @media (max-width: 600px) {
-      .schools-container {
+      .container {
         padding: 12px 4px;
       }
-      .schools-container h2 {
-        font-size: 1.2em;
+      h1 {
+        font-size: 1.23em;
       }
-      .schools-container .quote-btn {
-        padding: 11px 10px;
+      .schools-cta, .schools-price {
         font-size: 1em;
+      }
+      button {
+        padding: 12px 8px;
+        font-size: 0.98em;
       }
     }
   </style>
 </head>
 <body>
   <div id="header"></div>
-
-  <div class="schools-container" data-aos="zoom-in">
-    <h2>The Smartest Way to Equip Your Classroom with Pro Software</h2>
-    <p style="font-size:1.18em; font-weight:bold; color:#330867; text-align:center;">Finally – professional design tools that work the way teachers actually teach!</p>
-    <p>
-      Stop wasting money on rigid licenses that collect dust between semesters. Our smart education licensing gives you the freedom to:<br>
-      <span style="color:#30cfd0; font-weight:bold;">Reuse. Reassign. Repeat.</span>
-    </p>
-    <ul>
+  <div class="container" data-aos="zoom-in">
+    <h1>Schools & Teachers: Smart Licensing</h1>
+    <div class="schools-intro">
+      Finally – professional design tools that work the way teachers actually teach!
+    </div>
+    <div class="schools-p">
+      Stop wasting money on rigid licenses that collect dust between semesters.<br>
+      <span>Reuse. Reassign. Repeat.</span>
+    </div>
+    <ul class="schools-ul">
       <li>Buy one set of licenses &amp; an admin access</li>
       <li>Use them for every class, every term, every year</li>
       <li>Never pay for idle seats again</li>
     </ul>
-    <h3>Why Educators Love This:</h3>
+    <div class="schools-h3">Why Educators Love This:</div>
     <div class="testimonials">
       <div class="quote">🔥 "I can finally give all my students access without begging for more budget!"</div>
       <div class="quote">🔥 "Takes 30 seconds to reassign licenses when new students arrive."</div>
       <div class="quote">🔥 "My IT department stopped complaining about license management!"</div>
     </div>
-    <h3>Perfect For:</h3>
-    <ul>
+    <div class="schools-h3">Perfect For:</div>
+    <ul class="schools-ul">
       <li>Teachers who want to provide professional tools</li>
       <li>Schools that need to maximize limited budgets</li>
       <li>Programs with rotating student rosters</li>
     </ul>
-    <h3>Works Seamlessly With:</h3>
+    <div class="schools-h3">Works Seamlessly With:</div>
     <div class="works-with">
       <span>AutoCAD</span>
       <span>Revit</span>
@@ -167,56 +210,90 @@
       <span>Inventor</span>
       <span>And more!</span>
     </div>
-    <h3>The Choice Is Simple:</h3>
+    <div class="schools-h3">The Choice Is Simple:</div>
     <ol class="choices">
       <li>Keep struggling with inflexible licenses</li>
       <li>Switch to the only system designed for real classrooms</li>
     </ol>
-    <p>
-      <strong>👉 Tell us your school/channel, needed tools, and seat count – we’ll send a custom solution in 24h!</strong>
-    </p>
-    <p style="font-size:1.12em; color:#330867; font-weight:bold;">Limited educator pricing available.<br>Contact us NOW. Get your custom quote!</p>
-    <a class="quote-btn" href="https://www.neoedu.xyz/contact" data-aos="fade-up">Get your Quote</a>
+    <div class="schools-cta">
+      👉 Tell us your school/channel, needed tools, and seat count – we’ll send a custom solution in 24h!
+    </div>
+    <div class="schools-price">
+      Limited educator pricing available.<br>Contact us NOW. Get your custom quote!
+    </div>
+    <form id="schoolContactForm" data-aos="fade-up">
+      <input type="text" name="prenom" placeholder="First Name" required>
+      <input type="text" name="nom" placeholder="Last Name" required>
+      <input type="email" name="email" placeholder="Email Address" required>
+      <input type="text" name="school" placeholder="School / Channel Name" required>
+      <input type="text" name="tools" placeholder="Needed Tools (e.g. AutoCAD, Revit)" required>
+      <input type="number" name="seat_count" min="1" placeholder="Number of Seats" required>
+      <textarea name="subject" placeholder="Your message or requirements" required></textarea>
+      <button type="submit">Get your Quote</button>
+    </form>
+    <div class="message" id="message"></div>
   </div>
-
   <div id="footer"></div>
-
   <script>
     function loadHTML(selector, url, callback) {
       fetch(url)
-        .then(response => {
-          if (!response.ok) throw new Error(`Erreur HTTP ${response.status}`);
-          return response.text();
+        .then(res => {
+          if (!res.ok) throw new Error("Error " + res.status);
+          return res.text();
         })
         .then(html => {
           document.querySelector(selector).innerHTML = html;
-          if (typeof callback === "function") callback();
+          if (callback) callback();
         })
-        .catch(error => {
-          console.error(`Erreur lors du chargement de ${url}:`, error);
-        });
+        .catch(error => console.error(`Error loading ${url}:`, error));
     }
-
     function initHeaderDropdown() {
       const header = document.querySelector('#header');
-      if (!header) return;
-      const button = header.querySelector('button');
-      const dropdown = header.querySelector('.dropdown');
+      const button = header?.querySelector('button');
+      const dropdown = header?.querySelector('.dropdown');
       if (!button || !dropdown) return;
-      button.addEventListener('click', function (e) {
+      button.addEventListener('click', (e) => {
         e.stopPropagation();
         dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
       });
-      document.addEventListener('click', function (e) {
+      document.addEventListener('click', (e) => {
         if (!button.contains(e.target) && !dropdown.contains(e.target)) {
           dropdown.style.display = 'none';
         }
       });
     }
-
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', () => {
       loadHTML('#header', 'header.html', initHeaderDropdown);
       loadHTML('#footer', 'footer.html');
+      const form = document.getElementById("schoolContactForm");
+      const messageBox = document.getElementById("message");
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+        try {
+          const response = await fetch("https://monbackend-6wwk.onrender.com/contact", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+          });
+          const result = await response.json();
+          if (response.ok) {
+            messageBox.style.color = "#3ddad7";
+            messageBox.textContent = "Message sent successfully.";
+            form.reset();
+          } else {
+            messageBox.style.color = "#3ddad7";
+            messageBox.textContent = "Error: " + (result.error || "unknown.");
+          }
+        } catch (error) {
+          messageBox.style.color = "#3ddad7";
+          messageBox.textContent = "Server connection error.";
+          console.error(error);
+        }
+      });
     });
   </script>
   <!-- AOS JS for scroll animations -->

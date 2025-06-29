@@ -42,6 +42,10 @@
       transition: transform 0.3s ease;
       cursor: pointer;
       text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 420px;
     }
 
     .product:hover {
@@ -57,6 +61,14 @@
     .product h3 {
       margin: 15px 0 10px;
       color: #222;
+    }
+
+    .product .desc {
+      font-size: 0.99em;
+      color: #444;
+      margin-bottom: 12px;
+      flex: 1;
+      padding: 0 2px;
     }
 
     .price {
@@ -102,72 +114,84 @@
     <a class="product" href="order.html?software=Architecture%20Pack">
       <img src="images/Architecture.png" alt="Architecture">
       <h3>Architecture Pack</h3>
+      <div class="desc">Design, visualize, and construct with the ultimate trio for architects and designers. AutoCAD delivers precision drafting, Revit powers intelligent BIM workflows, and 3ds Max brings stunning 3D visualizations to life. Streamline your projects from concept to completion with industry-leading tools.</div>
       <div class="price"><span class="old-price">210€</span><span class="new-price">150€</span></div>
       <div class="order-button">Order Now</div>
     </a>
     <a class="product" href="order.html?software=Construction%20and%20BIM">
       <img src="images/Construction.png" alt="Construction">
       <h3>Construction & BIM</h3>
+      <div class="desc">The complete solution for modern construction. Seamlessly integrate design, modeling, and coordination with AutoCAD’s drafting precision, Revit’s intelligent BIM tools, and Navisworks’ clash detection and project review. Streamline workflows, reduce errors, and deliver projects faster—from planning to execution.</div>
       <div class="price"><span class="old-price">210€</span><span class="new-price">150€</span></div>
       <div class="order-button">Order Now</div>
     </a>
     <a class="product" href="order.html?software=Animation%20and%20VFX">
       <img src="images/Animation.png" alt="Animation">
       <h3>Animation & VFX</h3>
+      <div class="desc">Bring stories to life with Hollywood-grade tools. Master 3D animation, cinematic effects, and motion capture with Maya’s industry-leading VFX, 3ds Max’s powerful modeling & rendering, and MotionBuilder’s real-time character animation. Perfect for studios, indie creators, and next-gen storytelling.</div>
       <div class="price"><span class="old-price">210€</span><span class="new-price">150€</span></div>
       <div class="order-button">Order Now</div>
     </a>
     <a class="product" href="order.html?software=AutoCAD">
       <img src="images/Autocad.png" alt="AutoCAD">
       <h3>AutoCAD</h3>
+      <div class="desc">The industry-leading CAD software for precision 2D and 3D design. Empower your engineering, architecture, and construction projects with powerful drafting tools, automation, and seamless collaboration. Build smarter, faster, and with unmatched accuracy.</div>
       <div class="price"><span class="old-price">70€</span><span class="new-price">55€</span></div>
       <div class="order-button">Order Now</div>
     </a>
     <a class="product" href="order.html?software=Revit">
       <img src="images/Revit.png" alt="Revit">
       <h3>Revit</h3>
+      <div class="desc">Transform your BIM (Building Information Modeling) workflow with Autodesk Revit. Design, collaborate, and document smarter with intelligent 3D modeling for architects, engineers, and construction professionals.</div>
       <div class="price"><span class="old-price">70€</span><span class="new-price">55€</span></div>
       <div class="order-button">Order Now</div>
     </a>
     <a class="product" href="order.html?software=3ds%20Max">
       <img src="images/3ds.png" alt="3ds Max">
       <h3>3ds Max</h3>
+      <div class="desc">Create stunning 3D models, animations, and visualizations with Autodesk 3ds Max. Perfect for game developers, architects, and designers, it offers powerful modeling, rendering, and simulation tools to bring your creative visions to life.</div>
       <div class="price"><span class="old-price">70€</span><span class="new-price">55€</span></div>
       <div class="order-button">Order Now</div>
     </a>
     <a class="product" href="order.html?software=Maya">
       <img src="images/Maya.png" alt="Maya">
       <h3>Maya</h3>
+      <div class="desc">The ultimate 3D animation and VFX software, Autodesk Maya is the choice of Hollywood studios and game developers. Craft breathtaking characters, dynamic effects, and immersive worlds with industry-leading tools.</div>
       <div class="price"><span class="old-price">70€</span><span class="new-price">55€</span></div>
       <div class="order-button">Order Now</div>
     </a>
     <a class="product" href="order.html?software=Navisworks">
       <img src="images/Noviswork.png" alt="Navisworks">
       <h3>Navisworks</h3>
+      <div class="desc">Streamline project coordination with Autodesk Navisworks—the ultimate tool for 5D BIM clash detection, simulation, and construction planning. Improve accuracy, reduce risks, and deliver projects on time.</div>
       <div class="price"><span class="old-price">70€</span><span class="new-price">55€</span></div>
       <div class="order-button">Order Now</div>
     </a>
     <a class="product" href="order.html?software=Inventor">
       <img src="images/Inventor.png" alt="Inventor">
       <h3>Inventor</h3>
+      <div class="desc">Power your mechanical design with Autodesk Inventor, the go-to 3D CAD software for engineers. Create precise models, simulate real-world performance, and accelerate product development with professional-grade tools.</div>
       <div class="price"><span class="old-price">70€</span><span class="new-price">55€</span></div>
       <div class="order-button">Order Now</div>
     </a>
     <a class="product" href="order.html?software=MotionBuilder">
       <img src="images/Motionbuilder.png" alt="MotionBuilder">
       <h3>MotionBuilder</h3>
+      <div class="desc">Bring characters to life with Autodesk MotionBuilder, the real-time 3D animation powerhouse. Ideal for filmmakers and game studios, it delivers advanced motion capture editing and cinematic storytelling.</div>
       <div class="price"><span class="old-price">70€</span><span class="new-price">55€</span></div>
       <div class="order-button">Order Now</div>
     </a>
     <a class="product" href="order.html?software=Fusion%20360">
       <img src="images/Fusion 360.png" alt="Fusion 360">
       <h3>Fusion 360</h3>
+      <div class="desc">Autodesk Fusion 360 – The all-in-one CAD, CAM, and CAE platform for innovators. Design, engineer, and manufacture faster with cloud-powered 3D modeling, simulation, and machining tools—perfect for startups and industry leaders alike.</div>
       <div class="price"><span class="old-price">70€</span><span class="new-price">55€</span></div>
       <div class="order-button">Order Now</div>
     </a>
     <a class="product" href="order.html?software=Flame">
       <img src="images/Flame.png" alt="Flame">
       <h3>Flame</h3>
+      <div class="desc">Autodesk Flame – The industry’s leading VFX and finishing software for high-end post-production. Master color grading, compositing, and visual effects with real-time performance, trusted by top studios worldwide.</div>
       <div class="price"><span class="old-price">70€</span><span class="new-price">55€</span></div>
       <div class="order-button">Order Now</div>
     </a>

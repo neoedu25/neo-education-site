@@ -1,248 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Order Software - Neo Education</title>
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="ea13165e-12eb-4e4b-b524-bd8ec65b4af8"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(to right, #30cfd0, #330867);
-      color: white;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    .form-container {
-      background-color: rgba(0, 0, 0, 0.85);
-      color: white;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
-      max-width: 600px;
-      width: 90%;
-      margin: 40px auto;
-    }
-    .form-container h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-    input, select, textarea {
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 1em;
-    }
-    button {
-      background-color: #ffd700;
-      color: #330867;
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      font-size: 1em;
-      cursor: pointer;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-    }
-    button:hover {
-      background-color: #ffc400;
-    }
-    .message {
-      text-align: center;
-      margin-top: 15px;
-    }
-    .how-to-buy {
-      background-color: #f9f9f9;
-      padding: 30px;
-      border-radius: 12px;
-      margin-top: 40px;
-      color: #000;
-    }
-    .how-to-buy h2 {
-      text-align: center;
-      color: #1e3c72;
-    }
-    .how-to-buy ol {
-      line-height: 1.8;
-      max-width: 800px;
-      margin: 20px auto;
-      font-size: 1em;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Order Autodesk Software | Neo Education</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Order your Autodesk student license easily and securely with Neo Education. Fast processing, multiple payment methods, and full support.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(120deg, #fdf6e3 0%, #c0eaff 100%);
+            margin: 0;
+            min-height: 100vh;
+        }
+        .container {
+            background: #fff;
+            max-width: 500px;
+            margin: 30px auto 20px auto;
+            padding: 2rem 2.5rem 2.5rem 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+        }
+        h1 {
+            text-align: center;
+            color: #1957a8;
+            margin-bottom: 0.4em;
+        }
+        .subtitle {
+            text-align: center;
+            margin-top: 0;
+            color: #555;
+            font-size: 1.09em;
+            margin-bottom: 1.5em;
+        }
+        form label {
+            font-size: 1em;
+            color: #234;
+            display: block;
+            margin-bottom: 0.2em;
+            margin-top: 1.2em;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 0.65em 0.7em;
+            font-size: 1em;
+            border: 1px solid #b9d8f6;
+            border-radius: 8px;
+            margin-bottom: 0.35em;
+            box-sizing: border-box;
+            background: #fafdff;
+            transition: border 0.2s;
+        }
+        input:focus, select:focus, textarea:focus {
+            border: 1.5px solid #1957a8;
+            outline: none;
+        }
+        button[type="submit"] {
+            width: 100%;
+            padding: 0.8em;
+            margin-top: 1.2em;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #1957a8 70%, #42c6ff 100%);
+            color: #fff;
+            font-size: 1.14em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            box-shadow: 0 2px 8px rgba(33, 85, 188, 0.08);
+        }
+        button[disabled] {
+            background: #a6b3c2;
+            cursor: not-allowed;
+        }
+        .success, .error {
+            text-align: center;
+            padding: 0.8em 0.3em;
+            border-radius: 8px;
+            margin-top: 1em;
+            font-weight: 600;
+        }
+        .success { background: #e6fbec; color: #188142; }
+        .error   { background: #ffeaea; color: #a52222; }
+        .howto {
+            margin: 2.5em auto 1.5em auto;
+            background: #e3f1ff;
+            border-left: 5px solid #1957a8;
+            padding: 1.1em 1.3em;
+            border-radius: 8px;
+            font-size: 1.07em;
+        }
+        .contact-options {
+            margin-top: 2em;
+            text-align: center;
+            font-size: 0.98em;
+        }
+        .contact-options a {
+            color: #1957a8;
+            text-decoration: underline;
+            margin: 0 0.7em;
+        }
+        @media (max-width: 600px) {
+            .container { max-width: 97vw; padding: 1.25em 0.7em 2em 0.7em;}
+            .howto { font-size: 0.98em; }
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <h1>Order Your Autodesk License</h1>
+        <div class="subtitle">Fast, secure, and verified student licenses with Neo Education</div>
 
-  <div id="header"></div>
+        <form id="orderForm" autocomplete="off">
+            <label for="prenom">First Name</label>
+            <input type="text" id="prenom" name="prenom" required maxlength="32">
 
-  <div class="form-container">
-    <h2>Order Your Software</h2>
-    <form id="orderForm" autocomplete="off">
-      <input type="text" name="prenom" placeholder="First Name" required>
-      <input type="text" name="nom" placeholder="Last Name" required>
-      <input type="email" name="email" placeholder="Email Address" required>
-      <input type="tel" name="phone" placeholder="Phone Number (optional)">
-      <select name="logiciel" required id="software-select">
-        <option value="">-- Select Software --</option>
-        <option>Architecture Pack</option>
-        <option>Construction and BIM</option>
-        <option>Animation and VFX</option>
-        <option>AutoCAD</option>
-        <option>Revit</option>
-        <option>Maya</option>
-        <option>3ds Max</option>
-        <option>Fusion 360</option>
-        <option>Inventor</option>
-        <option>Navisworks</option>
-        <option>MotionBuilder</option>
-        <option>Flame</option>
-      </select>
-      <select name="paiment" required>
-        <option value="">-- Select Payment Method --</option>
-        <option value="Carte">Bank Card</option>
-        <option value="PayPal">PayPal</option>
-        <option value="Virement bancaire">Bank Transfer</option>
-        <option value="Crypto">Crypto</option>
-      </select>
-      <select name="contact_Method">
-        <option value="">-- Preferred Contact Method (optional) --</option>
-        <option value="Email">Email</option>
-        <option value="WhatsApp">WhatsApp</option>
-        <option value="Telegram">Telegram</option>
-        <option value="Téléphone">Phone</option>
-      </select>
-      <textarea name="message" rows="4" placeholder="Additional message (optional)"></textarea>
-      <button type="submit">Submit Order</button>
-    </form>
-    <div class="message" id="message"></div>
-    <section class="how-to-buy">
-      <h2>How to Buy</h2>
-      <ol>
-        <li><strong>Complete the Form</strong><br>
-          Fill in your details carefully and submit the form.</li>
-        <li><strong>Receive Your Access Email</strong><br>
-          You'll get an official email from Autodesk with access instructions.</li>
-        <li><strong>Get Your Payment Link</strong><br>
-          A secure link will be sent via your preferred contact method.<br>
-          <em style="color: green;">Note: Payment is only requested after access is activated.</em></li>
-        <li><strong>Enjoy Your License</strong><br>
-          After payment, your license is valid for one year.</li>
-      </ol>
-    </section>
-  </div>
+            <label for="nom">Last Name</label>
+            <input type="text" id="nom" name="nom" required maxlength="32">
 
-  <div id="footer"></div>
-<!-- Only the script section needs to change; rest of your file can remain the same. -->
-<script>
-  // Preselect software from query parameter
-  function preselectSoftwareFromUrl() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const softwareFromUrl = urlParams.get('software');
-    if (softwareFromUrl) {
-      const select = document.getElementById('software-select');
-      Array.from(select.options).forEach(option => {
-        if (option.text.toLowerCase().trim() === decodeURIComponent(softwareFromUrl).toLowerCase().trim()) {
-          option.selected = true;
+            <label for="email">Student Email</label>
+            <input type="email" id="email" name="email" required maxlength="60" placeholder="your@student.edu">
+
+            <label for="phone">Phone &amp; WhatsApp</label>
+            <input type="tel" id="phone" name="phone" required maxlength="22" pattern="^\+?\d{8,22}$" placeholder="+213XXXXXXXXX">
+
+            <label for="logiciel">Choose Software</label>
+            <select id="logiciel" name="logiciel" required>
+                <option value="" disabled selected>Select one</option>
+                <option>AutoCAD</option>
+                <option>Revit</option>
+                <option>3ds Max</option>
+                <option>Maya</option>
+                <option>Navisworks</option>
+                <option>Inventor</option>
+                <option>MotionBuilder</option>
+                <option>Fusion 360</option>
+                <option>Flame</option>
+                <option>Architecture Pack</option>
+                <option>Construction and BIM</option>
+                <option>Animation and VFX</option>
+            </select>
+
+            <label for="paiment">Payment Method</label>
+            <select id="paiment" name="paiment" required>
+                <option value="" disabled selected>Select payment method</option>
+                <option>BaridiMob</option>
+                <option>CIB</option>
+                <option>CCP</option>
+                <option>PayPal</option>
+                <option>Wise</option>
+                <option>Western Union</option>
+            </select>
+
+            <label for="contact_Method">Preferred Contact</label>
+            <select id="contact_Method" name="contact_Method" required>
+                <option value="" disabled selected>Select contact method</option>
+                <option>Email</option>
+                <option>WhatsApp</option>
+                <option>Telegram</option>
+                <option>Phone Call</option>
+            </select>
+
+            <label for="message">Any Notes? (optional)</label>
+            <textarea id="message" name="message" rows="2" maxlength="300" placeholder="E.g. Need Revit 2024, urgent, etc."></textarea>
+
+            <!-- Simple Math CAPTCHA -->
+            <label id="captcha-label"></label>
+            <input type="number" id="captcha-answer" name="captcha_answer" required placeholder="Your answer">
+            <input type="hidden" id="captcha-num1" name="captcha_num1">
+            <input type="hidden" id="captcha-num2" name="captcha_num2">
+
+            <button type="submit" id="submitBtn">Send Order</button>
+            <div id="formMessage"></div>
+        </form>
+
+        <div class="howto">
+            <b>How to order?</b>
+            <ol>
+                <li>Fill out your details and select your Autodesk software.</li>
+                <li>Choose your payment and contact preference.</li>
+                <li>After submitting, our team will contact you to confirm your order and guide you through payment.</li>
+                <li>You’ll receive your official student license in 1–12 hours after payment.</li>
+            </ol>
+            <div style="margin-top:0.7em; color:#1957a8;"><b>Questions?</b> Contact us anytime!</div>
+        </div>
+
+        <div class="contact-options">
+            <a href="mailto:support@neoedu.xyz">Email Support</a>
+            <a href="https://wa.me/213774338328" target="_blank">WhatsApp</a>
+            <a href="https://t.me/neoedualgeria" target="_blank">Telegram</a>
+        </div>
+    </div>
+
+    <script>
+        // Pre-select logiciel if param in URL
+        window.onload = function() {
+            // Set up CAPTCHA
+            setCaptcha();
+
+            // Pre-select software
+            const params = new URLSearchParams(window.location.search);
+            const soft = params.get('logiciel');
+            if (soft) {
+                const select = document.getElementById('logiciel');
+                for (let i = 0; i < select.options.length; i++) {
+                    if (select.options[i].value.toLowerCase() === soft.toLowerCase()) {
+                        select.selectedIndex = i;
+                        break;
+                    }
+                }
+            }
+        };
+
+        // Math CAPTCHA logic
+        function setCaptcha() {
+            const num1 = Math.floor(Math.random() * 8) + 2; // 2-9
+            const num2 = Math.floor(Math.random() * 8) + 2;
+            document.getElementById('captcha-label').innerText = `What is ${num1} + ${num2}?`;
+            document.getElementById('captcha-num1').value = num1;
+            document.getElementById('captcha-num2').value = num2;
         }
-      });
-    }
-  }
 
-  const form = document.getElementById("orderForm");
-  const messageBox = document.getElementById("message");
+        // Form submission
+        document.getElementById('orderForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submitBtn');
+            const msgDiv = document.getElementById('formMessage');
+            msgDiv.textContent = "";
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Sending...";
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+            // Gather form data
+            const formData = {
+                prenom: document.getElementById('prenom').value.trim(),
+                nom: document.getElementById('nom').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                logiciel: document.getElementById('logiciel').value,
+                paiment: document.getElementById('paiment').value,
+                contact_Method: document.getElementById('contact_Method').value,
+                message: document.getElementById('message').value.trim(),
+                captcha_num1: document.getElementById('captcha-num1').value,
+                captcha_num2: document.getElementById('captcha-num2').value,
+                captcha_answer: document.getElementById('captcha-answer').value.trim()
+            };
 
-    const formData = new FormData(form);
+            // Client-side basic validation
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+                msgDiv.innerHTML = '<div class="error">Please enter a valid email address.</div>';
+                submitBtn.disabled = false; submitBtn.textContent = "Send Order"; return;
+            }
+            if (!/^\+?\d{8,22}$/.test(formData.phone)) {
+                msgDiv.innerHTML = '<div class="error">Please enter a valid phone/WhatsApp number.</div>';
+                submitBtn.disabled = false; submitBtn.textContent = "Send Order"; return;
+            }
 
-    // Remove empty optional fields so backend gets undefined/null if not provided
-    if (!formData.get('phone')) formData.delete('phone');
-    if (!formData.get('contact_Method')) formData.delete('contact_Method');
-    if (!formData.get('message')) formData.delete('message');
-
-    // Prepare the object to send - all keys already match your French DB
-    const data = Object.fromEntries(formData.entries());
-
-    try {
-      const response = await fetch("https://monbackend-6wwk.onrender.com/order", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-      });
-
-      const result = await response.json();
-
-      if (response.ok && result.success) {
-        window.location.href = "thankyou.html";
-        return; // prevent any message showing below
-      } else {
-        messageBox.style.color = "red";
-        messageBox.textContent = "Error: " + (result.error || "An error occurred.");
-      }
-
-    } catch (error) {
-      messageBox.style.color = "red";
-      messageBox.textContent = "Server connection error.";
-      console.error(error);
-    }
-  });
-
-  function loadHTML(selector, url, callback) {
-    fetch(url)
-      .then(response => {
-        if (!response.ok) throw new Error(`Erreur HTTP ${response.status}`);
-        return response.text();
-      })
-      .then(html => {
-        document.querySelector(selector).innerHTML = html;
-        if (typeof callback === "function") callback();
-      })
-      .catch(error => {
-        console.error(`Erreur lors du chargement de ${url}:`, error);
-      });
-  }
-
-  function initHeaderDropdown() {
-    const header = document.querySelector('#header');
-    if (!header) return;
-
-    const button = header.querySelector('button');
-    const dropdown = header.querySelector('.dropdown');
-
-    if (!button || !dropdown) return;
-
-    button.addEventListener('click', function (e) {
-      e.stopPropagation();
-      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-    });
-
-    document.addEventListener('click', function (e) {
-      if (!button.contains(e.target) && !dropdown.contains(e.target)) {
-        dropdown.style.display = 'none';
-      }
-    });
-  }
-
-  document.addEventListener('DOMContentLoaded', function () {
-    loadHTML('#header', 'header.html', initHeaderDropdown);
-    loadHTML('#footer', 'footer.html');
-    preselectSoftwareFromUrl();
-  });
-</script>
-
+            // Submit to API
+            try {
+                const response = await fetch('/order', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+                const data = await response.json();
+                if (data.success) {
+                    msgDiv.innerHTML = `<div class="success">Order received!<br>Your order number: <b>${data.commande_number}</b><br>We will contact you soon.</div>`;
+                    document.getElementById('orderForm').reset();
+                    setCaptcha();
+                    setTimeout(() => { window.location.href = data.redirect || "/thankyou.html"; }, 2600);
+                } else {
+                    msgDiv.innerHTML = `<div class="error">${data.error || "Submission failed. Please try again."}</div>`;
+                    setCaptcha();
+                }
+            } catch (err) {
+                msgDiv.innerHTML = `<div class="error">Could not submit order. Try again later.</div>`;
+                setCaptcha();
+            }
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Send Order";
+        });
+    </script>
 </body>
 </html>

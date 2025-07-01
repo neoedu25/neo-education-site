@@ -97,7 +97,7 @@
   <script>
     function logout() {
       localStorage.clear();
-      window.location.href = "influencer_login.html";
+      window.location.href = "login.html";
     }
     function loadHTML(selector, url, callback) {
       fetch(url)
@@ -136,7 +136,7 @@
 
     // Dashboard logic
     const referralCode = localStorage.getItem("referral_code");
-    if(!referralCode) window.location.href = "influencer_login.html";
+    if(!referralCode) window.location.href = "login.html";
     document.getElementById("referralCode").textContent = referralCode;
 
     fetch("https://monbackend-6wwk.onrender.com/orders_by_referral", {

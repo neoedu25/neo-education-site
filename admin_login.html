@@ -97,21 +97,31 @@
     </form>
   </div>
   <script>
-    // Change these to your own admin username and password!
-    const ADMIN_USERNAME = "raoufadmin";
-    const ADMIN_PASSWORD = "19Jihane96@"; // Change this to your strong password!
-
     document.getElementById("adminLoginForm").addEventListener("submit", function(e) {
       e.preventDefault();
       document.getElementById("adminLoginError").textContent = "";
       const username = document.getElementById("adminUsername").value.trim();
       const password = document.getElementById("adminPassword").value;
-      if(username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
-        localStorage.setItem("is_admin", "true");
-        window.location.href = "admin_dashboard.html";
-      } else {
-        document.getElementById("adminLoginError").textContent = "Invalid admin credentials.";
-      }
+
+      // --- Send credentials to BACKEND, not localStorage ---
+      fetch("https://monbackend-6wwk.onrender.com/admin_login", {
+        method: "POST",
+        credentials: "include", // <-- CRITICAL for cookies!
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          // Optionally: you could check session on dashboard, not here
+          window.location.href = "admin_dashboard.html";
+        } else {
+          document.getElementById("adminLoginError").textContent = data.error || "Invalid admin credentials.";
+        }
+      })
+      .catch(() => {
+        document.getElementById("adminLoginError").textContent = "Network error. Please try again.";
+      });
     });
   </script>
 </body>

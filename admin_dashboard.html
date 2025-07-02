@@ -181,7 +181,7 @@
     }
 
     function fetchCommandes() {
-      fetch("https://monbackend-6wwk.onrender.com/all_commandes")
+      fetch("https://monbackend-6wwk.onrender.com/all_commandes", { credentials: "include" })
         .then(r => r.json())
         .then(data => {
           renderTable(data.commandes || data, "commandesHead", "commandesBody", "emptyCommandes");
@@ -191,7 +191,7 @@
         });
     }
     function fetchContacts() {
-      fetch("https://monbackend-6wwk.onrender.com/all_contacts")
+      fetch("https://monbackend-6wwk.onrender.com/all_contacts", { credentials: "include" })
         .then(r => r.json())
         .then(data => {
           renderTable(data.contacts || data, "contactsHead", "contactsBody", "emptyContacts");
@@ -201,7 +201,7 @@
         });
     }
     function fetchSchools() {
-      fetch("https://monbackend-6wwk.onrender.com/all_schools")
+      fetch("https://monbackend-6wwk.onrender.com/all_schools", { credentials: "include" })
         .then(r => r.json())
         .then(data => {
           renderTable(data.schools || data, "schoolsHead", "schoolsBody", "emptySchools");

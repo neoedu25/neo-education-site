@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard - Neo Education</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(to right, #30cfd0, #330867);
+      color: #330867;
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .dashboard-container {
+      background: rgba(255,255,255,0.99);
+      color: #330867;
+      padding: 32px 22px 24px 22px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      max-width: 1150px;
+      width: 97%;
+      margin: 40px auto 40px auto;
+      min-height: 280px;
+    }
+    h2 { color: #330867; text-align: center; margin-bottom: 36px; }
+    .table-title { color: #30cfd0; margin: 40px 0 12px 0; font-size: 1.3em; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 38px;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(48,207,208,0.05);
+    }
+    th, td {
+      padding: 10px 8px;
+      text-align: left;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 0.98em;
+    }
+    th {
+      background: #330867;
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: .5px;
+    }
+    tr:last-child td { border-bottom: none; }
+    .logout-btn {
+      float: right;
+      background: #ffd700;
+      color: #330867;
+      border: none;
+      border-radius: 8px;
+      padding: 9px 24px;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      margin-bottom: 10px;
+      transition: background 0.3s;
+    }
+    .logout-btn:hover { background: #ffc400; }
+    @media (max-width: 900px) {
+      .dashboard-container { padding: 15px 2vw 20px 2vw; }
+      th, td { font-size: 0.93em; }
+    }
+    @media (max-width: 600px) {
+      .dashboard-container { padding: 6px 1vw 14px 1vw; }
+      table, th, td { font-size: 0.88em; }
+    }
+    .empty-table-msg {
+      text-align: center;
+      color: #999;
+      font-style: italic;
+      margin: 25px 0 15px 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="header"></div>
+  <div class="dashboard-container" data-aos="fade-up">
+    <button class="logout-btn" onclick="logout()">Logout</button>
+    <h2>Admin Dashboard</h2>
+
+    <div class="table-title">All Commandes</div>
+    <div style="overflow-x:auto;">
+      <table id="commandesTable">
+        <thead id="commandesHead"></thead>
+        <tbody id="commandesBody"></tbody>
+      </table>
+    </div>
+    <div id="emptyCommandes" class="empty-table-msg" style="display:none;">No commandes found.</div>
+
+    <div class="table-title">Contact Submissions</div>
+    <div style="overflow-x:auto;">
+      <table id="contactsTable">
+        <thead id="contactsHead"></thead>
+        <tbody id="contactsBody"></tbody>
+      </table>
+    </div>
+    <div id="emptyContacts" class="empty-table-msg" style="display:none;">No contact submissions found.</div>
+
+    <div class="table-title">Schools</div>
+    <div style="overflow-x:auto;">
+      <table id="schoolsTable">
+        <thead id="schoolsHead"></thead>
+        <tbody id="schoolsBody"></tbody>
+      </table>
+    </div>
+    <div id="emptySchools" class="empty-table-msg" style="display:none;">No schools found.</div>
+  </div>
+  <div id="footer"></div>
+  <script>
+    // --- ADMIN PAGE PROTECTION ---
+    if(localStorage.getItem("is_admin") !== "true") {
+      window.location.href = "admin_login.html";
+    }
+
+    function logout() {
+      localStorage.removeItem("is_admin");
+      window.location.href = "admin_login.html";
+    }
+    function loadHTML(selector, url, callback) {
+      fetch(url)
+        .then(response => {
+          if (!response.ok) throw new Error(`HTTP Error ${response.status}`);
+          return response.text();
+        })
+        .then(html => {
+          document.querySelector(selector).innerHTML = html;
+          if (typeof callback === "function") callback();
+        })
+        .catch(error => {
+          console.error(`Error loading ${url}:`, error);
+        });
+    }
+    function initHeaderDropdown() {
+      const header = document.querySelector('#header');
+      if (!header) return;
+      const button = header.querySelector('button');
+      const dropdown = header.querySelector('.dropdown');
+      if (!button || !dropdown) return;
+      button.addEventListener('click', function (e) {
+        e.stopPropagation();
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+      });
+      document.addEventListener('click', function (e) {
+        if (!button.contains(e.target) && !dropdown.contains(e.target)) {
+          dropdown.style.display = 'none';
+        }
+      });
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      loadHTML('#header', 'header.html', initHeaderDropdown);
+      loadHTML('#footer', 'footer.html');
+      fetchCommandes();
+      fetchContacts();
+      fetchSchools();
+    });
+
+    function renderTable(data, headEl, bodyEl, emptyMsgEl) {
+      if (!Array.isArray(data) || data.length === 0) {
+        document.getElementById(emptyMsgEl).style.display = "";
+        document.getElementById(headEl).innerHTML = "";
+        document.getElementById(bodyEl).innerHTML = "";
+        return;
+      }
+      document.getElementById(emptyMsgEl).style.display = "none";
+      // Build table head from keys:
+      const keys = Object.keys(data[0]);
+      document.getElementById(headEl).innerHTML = "<tr>" + keys.map(k => `<th>${k}</th>`).join('') + "</tr>";
+      // Build table body:
+      document.getElementById(bodyEl).innerHTML = data.map(row =>
+        "<tr>" + keys.map(k => `<td>${row[k]}</td>`).join('') + "</tr>"
+      ).join('');
+    }
+
+    function fetchCommandes() {
+      fetch("https://monbackend-6wwk.onrender.com/all_commandes")
+        .then(r => r.json())
+        .then(data => {
+          renderTable(data.commandes || data, "commandesHead", "commandesBody", "emptyCommandes");
+        })
+        .catch(() => {
+          renderTable([], "commandesHead", "commandesBody", "emptyCommandes");
+        });
+    }
+    function fetchContacts() {
+      fetch("https://monbackend-6wwk.onrender.com/all_contacts")
+        .then(r => r.json())
+        .then(data => {
+          renderTable(data.contacts || data, "contactsHead", "contactsBody", "emptyContacts");
+        })
+        .catch(() => {
+          renderTable([], "contactsHead", "contactsBody", "emptyContacts");
+        });
+    }
+    function fetchSchools() {
+      fetch("https://monbackend-6wwk.onrender.com/all_schools")
+        .then(r => r.json())
+        .then(data => {
+          renderTable(data.schools || data, "schoolsHead", "schoolsBody", "emptySchools");
+        })
+        .catch(() => {
+          renderTable([], "schoolsHead", "schoolsBody", "emptySchools");
+        });
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 850,
+      once: false,
+      mirror: true
+    });
+  </script>
+</body>
+</html>

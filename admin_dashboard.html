@@ -215,7 +215,7 @@
         });
     }
     function fetchSchools() {
-      fetch("https://monbackend-6wwk.onrender.com/all_schools", { credentials: "include" })
+      fetch("https://monbackend-6wwk.onrender.com/all_school_quotes", { credentials: "include" })
         .then(r => r.json())
         .then(data => {
           renderTable(data.schools || data, "schoolsHead", "schoolsBody", "emptySchools");

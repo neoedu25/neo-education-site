@@ -1,11 +1,45 @@
 <footer style="background-color: #222; color: white; padding: 30px 20px; font-family: 'Montserrat', sans-serif; font-size: 0.9em; display: flex; flex-direction: column; align-items: center;">
-  <div style="width: 100%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-    <div style="flex: 1; min-width: 150px;">
+  <style>
+    /* Mobile responsive footer styles */
+    @media (max-width: 600px) {
+      footer {
+        padding: 18px 4px !important;
+        font-size: 0.98em !important;
+      }
+      .footer-main {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 12px !important;
+      }
+      .footer-logo {
+        margin-bottom: 8px;
+      }
+      .footer-links {
+        min-width: 0 !important;
+        text-align: left !important;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .footer-links a {
+        margin: 0 !important;
+        padding: 4px 0;
+        font-size: 1em;
+      }
+      .footer-copyright {
+        font-size: 0.97em !important;
+        margin-top: 14px !important;
+        padding-bottom: 2px;
+      }
+    }
+  </style>
+  <div class="footer-main" style="width: 100%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+    <div class="footer-logo" style="flex: 1; min-width: 150px;">
       <a href="index.html">
         <img src="Logo.png" alt="Neo Education Logo" style="height: 50px;">
       </a>
     </div>
-    <div style="flex: 2; text-align: center; min-width: 200px;">
+    <div class="footer-links" style="flex: 2; text-align: center; min-width: 200px;">
       <a href="index.html" style="color: white; text-decoration: none; margin: 0 15px;">Home</a>
       <a href="about.html" style="color: white; text-decoration: none; margin: 0 15px;">About Us</a>
       <a href="privacy.html" style="color: white; text-decoration: none; margin: 0 15px;">Privacy Policy</a>
@@ -13,7 +47,7 @@
       <a href="https://www.neoedu.xyz/contact" style="color: white; text-decoration: none; margin: 0 15px;">Contact Us</a>
     </div>
   </div>
-  <div style="margin-top: 20px; text-align: center;">
+  <div class="footer-copyright" style="margin-top: 20px; text-align: center;">
     &copy; 2025 <strong>NeoEducation</strong>. All rights reserved.
   </div>
 </footer>
